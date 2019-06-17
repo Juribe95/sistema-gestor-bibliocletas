@@ -15,8 +15,15 @@
         <link rel="stylesheet" href="scss/fontawesome.scss">
         <link rel="stylesheet" href="sprites/solid.svg">
         <link rel="stylesheet" href="js/jquery-1.10.2.js">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-        {{--  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">  --}}
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/data.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <link rel="stylesheet" href="js/graficos.js">
+        <script src="js/graficos.js "></script>
+
         <style>
             html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
             .w3-sidebar {
@@ -32,12 +39,13 @@
 
             @section('navbar')
 
-            <!-- Navbar -->
+             Navbar
             <div class="w3-top">
-                <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+                <div class="w3-bar w3-theme-sgb1 w3-top w3-left-align w3-large">
                     <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
                     {{--  <a href="inicio-admin" class="w3-bar-item w3-button w3-theme-l1"><img src="https://static.wixstatic.com/media/ba5a3d_ec64afa38c1147a4806a23e2da712627.png/v1/fill/w_240,h_159,al_c,q_80,usm_0.66_1.00_0.01/ba5a3d_ec64afa38c1147a4806a23e2da712627.webp" width="auto" height="60px"></a>  --}}
-                    <a href="inicio-admin" class="w3-bar-item w3-button w3-theme-l1">Logo</a>
+                    <a href="inicio-admin" class="w3-bar-item w3-button w3-theme-l1">Bibliocletas</a>
+
                 </div>
             </div>
         @show
@@ -74,45 +82,44 @@
  @section('content')
  <!-- Contenido de la pagina -->
  <div class="w3-row w3-padding-64">
-        <div class="w3-twothird w3-container">
+
           @section('parte1')
-        </div>
+
+
         {{--  <div class="w3-third w3-container">
           <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
           <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
         </div>  --}}
       </div>
+      @show
 
       <div class="w3-row">
-        <div class="w3-twothird w3-container">
+
           @section('parte2')
-          @show
-        </div>
-        {{--  <div class="w3-third w3-container">
-          <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
-          <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
-        </div>  --}}
+
+
       </div>
+      @show
 
       <div class="w3-row w3-padding-64">
-        <div class="w3-twothird w3-container">
+
           @section('parte3')
-        </div>
-        {{--  <div class="w3-third w3-container">
-          <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
-          <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
-        </div>  --}}
+
+          @show
+
       </div>
-        @show
+
 
         <footer id="myFooter">
-            <div class="w3-container w3-theme-l2 w3-padding-32">
-              <h4>Agrupacion abanico</h4>
-            </div>
+          <center>
+              <div class="w3-container w3-theme-sgb1 w3-padding-32">
+                  <img src="https://static.wixstatic.com/media/ba5a3d_ec64afa38c1147a4806a23e2da712627.png/v1/fill/w_480,h_318,al_c,q_80,usm_0.66_1.00_0.01/ba5a3d_ec64afa38c1147a4806a23e2da712627.webp" height="" class="d-inline-block align-top" alt="">
+                </div>
 
-            <div class="w3-container w3-theme-l1">
-              <p>Hecho por ♦Xero♦</a></p>
-            </div>
+                <div class="w3-container w3-theme-l1">
+                  <p><i class="fa fa-copyright" aria-hidden="true"></i> SGB</a></p>
+                </div>
+          </center>
           </footer>
 
 

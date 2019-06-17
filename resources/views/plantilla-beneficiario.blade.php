@@ -49,9 +49,9 @@
     <i class="fa fa-remove"></i>
   </a>
   <h4 class="w3-bar-item"><b>Menu</b></h4>
-  <a class="w3-bar-item w3-button w3-hover-black" href="inicio-admin">Inicio</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="#">Catalogo de libros</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="#">Historial de pedidos</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="inicio-beneficiario">Inicio</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="catalogo-beneficiario">Catalogo de libros</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="historial-beneficiario">Historial de pedidos</a>
 
 </nav>
 
@@ -108,7 +108,7 @@
             </div>
 
             <div class="w3-container w3-theme-l1">
-              <p>Hecho por ♦Xero♦</a></p>
+              <p></a></p>
             </div>
           </footer>
 
