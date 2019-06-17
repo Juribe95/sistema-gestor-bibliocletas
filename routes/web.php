@@ -22,3 +22,16 @@ Route::view('/categorias', 'categorias', ['name' => 'categorias']);
 Route::view('/autores', 'autores', ['name' => 'autores']);
 Route::view('/editoriales', 'editoriales', ['name' => 'editoriales']);
 Route::view('/reportes', 'reportes', ['name' => 'reportes']);
+Route::view('/inicio-beneficiario', 'inicio-beneficiario', ['name' => 'inicio-beneficiario']);
+Route::view('/historial-beneficiario', 'historial-beneficiario', ['name' => 'historial-beneficiario']);
+Route::view('/inicio-voluntario', 'inicio-voluntario', ['name' => 'inicio-voluntario']);
+Route::view('/catalogo-voluntario', 'catalogo-voluntario', ['name' => 'catalogo-voluntario']);
+Route::view('/historial-voluntario', 'historial-voluntario', ['name' => 'historial-voluntario']);
+Route::view('/agregar-ejemplar', 'agregar-ejemplar', ['name' => 'agregar-ejemplar']);
+Route::view('/editar-libro', 'editar-libro', ['name' => 'editar-libro']);
+Route::view('/eliminar-libro', 'eliminar-libro', ['name' => 'eliminar-libro']);
+Route::view('/registrar-libro', 'registrar-libro', ['name' => 'registrar-libro']);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
