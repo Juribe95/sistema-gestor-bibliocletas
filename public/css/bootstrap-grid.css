@@ -23,6 +23,13 @@ html {
   margin-left: auto;
 }
 
+.margen{
+    padding-top: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+}
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
