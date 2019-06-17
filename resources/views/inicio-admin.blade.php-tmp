@@ -1,4 +1,5 @@
 
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\Juan Uribe\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 54
 @extends('Plantilla-admin')
 
 @section('title','login')
@@ -11,7 +12,7 @@
         <iframe src="https://www.youtube.com/embed/LSlGfZfM3Us" frameborder="0" all="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     </div>
-    
+
 
 
     @endsection

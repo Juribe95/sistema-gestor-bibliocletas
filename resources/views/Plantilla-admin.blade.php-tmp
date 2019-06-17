@@ -1,3 +1,5 @@
+
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\Juan Uribe\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 54
 <html lang="en">
     <head>
         <title> @yield('title')</title>
@@ -34,8 +36,8 @@
             height: inherit;
             }
         </style>
-        
-      
+
+
 
 
 
@@ -52,7 +54,7 @@
                     <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
 
                     <a href="inicio-admin" class="w3-bar-item w3-button w3-theme-l1">Bibliocletas</a>
-                    
+
                 </div>
             </div>
         @show
