@@ -49,8 +49,9 @@
     <i class="fa fa-remove"></i>
   </a>
   <h4 class="w3-bar-item"><b>Menu</b></h4>
-  <a class="w3-bar-item w3-button w3-hover-black" href="inicio-admin">Inicio</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="administrar-libros-admin">Administrar Libros</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="inicio-voluntario">Inicio</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="catalogo-voluntario">Catalogo de libros</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="historial-voluntario">Historial Voluntario</a>
 
 </nav>
 
