@@ -12,7 +12,11 @@
 */
 
 
-Route::view('/', 'Login', ['name' => 'Login']);
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+
+//Route::view('/', 'Login', ['name' => 'Login']);
 Route::view('/inicio-admin', 'inicio-admin', ['name' => 'inicio-admin']);
 Route::view('/administrar-libros-admin', 'administrar-libros-admin', ['name' => 'administrar-libros-admin']);
 Route::view('/administrar-voluntarios-admin', 'administrar-voluntarios-admin', ['name' => 'administrar-voluntarios-admin']);
@@ -32,6 +36,4 @@ Route::view('/editar-libro', 'editar-libro', ['name' => 'editar-libro']);
 Route::view('/eliminar-libro', 'eliminar-libro', ['name' => 'eliminar-libro']);
 Route::view('/registrar-libro', 'registrar-libro', ['name' => 'registrar-libro']);
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
