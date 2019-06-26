@@ -1,5 +1,5 @@
 
-@extends('plantilla-tabla-admin')
+@extends('layouts.plantilla-tabla-admin')
 
 @section('title','Administrar Voluntarios')
 
@@ -11,7 +11,7 @@
             <h4>Administrar Voluntarios</h4>
         </div>
         <div class="col-md-2">
-                <a href="registrar-voluntario" class="btn btn-primary btn-sm" role="button" >Registrar Voluntario</a>
+                <a href="register" class="btn btn-primary btn-sm" role="button" >Registrar Voluntario</a>
         </div>
 
     </div>
@@ -19,36 +19,38 @@
 
     @section('parte2')
     <div class="table-responsive-sm">
-            <table class="table">
-                    <thead>
-                            <tr>
-                              <th scope="col">Nombre Completo</th>
-                              <th scope="col">Direccion</th>
-                              <th scope="col">Correo Electronico</th>
-                              <th scope="col">Telefono</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th scope="row">Juan Uribe</th>
-                              <td>Pedro Aguirre Cerda 555</td>
-                              <td>@inacapmail.cl</td>
-                              <td>912345678</td>
-                            </tr>
-                            <tr>
-                                    <th scope="row">Juan Uribe</th>
-                                    <td>Pedro Aguirre Cerda 555</td>
-                                    <td>@inacapmail.cl</td>
-                                    <td>912345678</td>
-                                  </tr>
-                                  <tr>
-                                        <th scope="row">Juan Uribe</th>
-                                        <td>Pedro Aguirre Cerda 555</td>
-                                        <td>@inacapmail.cl</td>
-                                        <td>912345678</td>
-                                      </tr>
-                          </tbody>
-            </table>
-          </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Acciones</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefono</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach ($cd as $element)
+            <tr>
+              <th scope="row">
+                <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Historial</a>
+                <a href="editar-libro" class="btn btn-secondary btn-sm" role="button" >Editar</a>
+                <a href="eliminar-libro" class="btn btn-secondary btn-sm" role="button" >Eliminar</a>
+              </th>
+              <td>
+                {{ 
+                  $element->name, 
+                  $element->apellido_paterno,
+                  $element->apellido_materno
+                }}
+              </td>
+              <td>{{ $element->email }}</td>
+              <td>{{ $element->telefono }}</td>
+            </tr>
+          @endforeach
+                            
+                                  
+        </tbody>
+      </table>
+    </div>
     @endsection
 @endsection

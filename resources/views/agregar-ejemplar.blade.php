@@ -1,47 +1,87 @@
-@extends('Plantilla-admin')
+@extends('layouts.plantilla-tabla-admin')
 
 @section('title','Agregar Ejemplar')
 
 @section('content')
-    @section('parte1')
-        <h4>Añadir nuevo Ejemplar</h4>
-    @endsection
+    
     @section('parte2')
-        <div class="row">
 
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                <h4>Codigo</h4>
-            </div>
-            <div class="col-md-10">
-                    <input type="text">
-            </div>
-        </div><br>
-        <div class="row">
-                <div class="col-md-2">
-                    <h4>Estado</h4>
-                    
+    <div class="row mt-4">
+            <div class="col-md-6 offset-md-3 mt-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Agregar Ejemplar</h4>
+                    </div>
+
+                    <div class="card-body">
+
+                    <form action="{{ route('ejemplar.insertar_ejemplar') }}" method="POST">
+                        
+                        @csrf
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">Codigo</label>
+                            <div class="col-md-6">
+                                <input id="codigo" type="text" class="form-control" name="codigo" >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">Estado</label>
+                            <div class="col-md-6">
+                        
+                                <select name="id_Estado" class="form-control">
+                                @foreach ($esta as $est)
+                                  <option value="{{ $est->id }} " >{{ $est->nombre_estado }}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">Nombre Libro</label>
+                            <div class="col-md-6">
+                                <select name="N_Serie_Libro" class="form-control">
+                                @foreach ($nserie as $ns)
+                                  <option value="{{ $ns->n_serie }} " >{{ $ns->titulo }}</option>
+                                @endforeach
+                                </select>
+                                
+                            </div>
+                        </div>
+                        <div class="form-group row mb-0">
+                                    <div class="col-md-8 offset-md-4">
+                                        <button type="submit" class="btn btn-primary ">Ingresar</button>
+                                    </div>
+                                </div>
+                    </form>
+
+
+                    </div>
+                    <div class="card-footer">
+                        @if (session('mensaje'))
+                                    <div class="alert alert-success" role="alert">
+                                    {{ session('mensaje') }}
+                                    </div>
+                                @endif
+
+                                @error('nombre_categoria')
+                                    <div class="alert alert-warning" role="alert">
+                                        El Nombre de Categoria es obligatorio
+                                    </div>
+                                @enderror
+
+
+
+                    </div>
+                        
+
+                         
+                        
                 </div>
-                <div class="col-md-10">
-                        <select class="dp">
-                            <option value="volvo">Disponible</option>
-                            <option value="saab">Prestado</option>
-                        </select>
-                </div>  
+            </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
 
-            </div>
-            <div class="col-md-4">
-                    <a href="agregar-ejemplar" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Añadir Ejemplar</a>
-            </div>
-            <div class="col-md-4">
 
-            </div>
-                
-        </div>
+
         
     @endsection
     @section('parte3')
