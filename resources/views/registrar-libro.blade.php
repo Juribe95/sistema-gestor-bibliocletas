@@ -1,4 +1,4 @@
-@extends('Plantilla-admin')
+@extends('layouts.plantilla-tabla-admin')
 
 @section('title','Registrar Libro')
 

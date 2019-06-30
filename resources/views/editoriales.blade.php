@@ -1,5 +1,5 @@
 
-@extends('plantilla-tabla-admin')
+@extends('layouts.plantilla-tabla-admin')
 
 @section('title','Editoriales')
 
@@ -12,7 +12,7 @@
             <h4>Editoriales</h4>
         </div>
         <div class="col-md-2">
-                <a href="#" class="btn btn-primary btn-sm" role="button" >Nueva Editorial</a>
+                <a href="editorial_registrar" class="btn btn-primary btn-sm" role="button" >Nueva Editorial</a>
         </div>
 
     </div>
@@ -20,6 +20,11 @@
 
 
 @section('parte2')
+@if (session('mensaje'))
+                  <div class="alert alert-success" role="alert">
+                  {{ session('mensaje') }}
+                  </div>
+                @endif
 <div class="table-responsive">
     <table class="table">
         <thead>
@@ -30,33 +35,26 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+
+
+            @foreach ($edit as $item)
+              <tr>
               <th scope="row">
-                <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Editar</a>
-                <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Eliminar</a>
+                <a href="{{ route('editorial.edit', $item) }}" class="btn btn-primary btn-sm" role="button">Editar</a>
+
+                <form action="{{ route('editorial.eliminar', $item) }}" method="post" class="d-inline">
+                  @method('DELETE')
+                  @csrf
+                 
+                  <button class="btn btn-primary btn-sm" type="submit">Eliminar</button>
+                </form>
               </th>
-              <td>Mc Graw</td>
-              
-              
+              <td>{{ $item-> nombre_editorial }}</td>
             </tr>
-            <tr>
-                    <th scope="row">
-                      <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Editar</a>
-                      <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Eliminar</a>
-                    </th>
-                    <td>Santillama</td>
-                    
-                    
-                  </tr>
-                  <tr>
-                        <th scope="row">
-                          <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Editar</a>
-                          <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Eliminar</a>
-                        </th>
-                        <td>era</td>
-                        
-                        
-                      </tr>
+            @endforeach
+
+
+                  
           </tbody>
     </table>
   </div>

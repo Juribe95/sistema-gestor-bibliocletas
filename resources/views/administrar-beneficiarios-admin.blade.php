@@ -1,5 +1,5 @@
 
-@extends('plantilla-tabla-admin')
+@extends('layouts.plantilla-tabla-admin')
 
 @section('title','Registrar Beneficiario')
 
@@ -12,7 +12,7 @@
             <h4>Administrar Beneficiario</h4>
         </div>
         <div class="col-md-2">
-                <a href="registrar-beneficiario" class="btn btn-primary btn-sm" role="button" >Registrar Beneficiario</a>
+                <a href="register" class="btn btn-primary btn-sm" role="button" >Registrar Beneficiario</a>
         </div>
 
     </div>
@@ -24,50 +24,28 @@
     <table class="table">
         <thead>
             <tr>
-              <th scope="col">Botones</th>
+              <th scope="col">Acciones</th>
               <th scope="col">Nombre</th>
-              <th scope="col">Direccion</th>
               <th scope="col">Correo Electronico</th>
               <th scope="col">Telefono</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            @foreach ($cd as $element)
+              <tr>
               <th scope="row">
                 <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Historial</a>
                 <a href="editar-libro" class="btn btn-secondary btn-sm" role="button" >Editar</a>
                 <a href="eliminar-libro" class="btn btn-secondary btn-sm" role="button" >Eliminar</a>
               </th>
-              <td>Juan Perez</td>
-              <td>2</td>
-              <td>jperez@gmail.com</td>
-              <td>912345678</td>
-              
+              <td>{{ $element->name }}</td>
+              <td>{{ $element->email }}</td>
+              <td>{{ $element->telefono }}</td>
             </tr>
-            <tr>
-                    <th scope="row">
-                      <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Historial</a>
-                      <a href="editar-libro" class="btn btn-secondary btn-sm" role="button" >Editar</a>
-                      <a href="eliminar-libro" class="btn btn-secondary btn-sm" role="button" >Eliminar</a>
-                    </th>
-                    <td>Juan Perez</td>
-                    <td>2</td>
-                    <td>jperez@gmail.com</td>
-                    <td>912345678</td>
-                    
-                  </tr>
-                  <tr>
-                        <th scope="row">
-                          <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Historial</a>
-                          <a href="editar-libro" class="btn btn-secondary btn-sm" role="button" >Editar</a>
-                          <a href="eliminar-libro" class="btn btn-secondary btn-sm" role="button" >Eliminar</a>
-                        </th>
-                        <td>Juan Perez</td>
-                        <td>2</td>
-                        <td>jperez@gmail.com</td>
-                        <td>912345678</td>
-                        
-                      </tr>
+            @endforeach
+            
+            
+                  
           </tbody>
     </table>
   </div>

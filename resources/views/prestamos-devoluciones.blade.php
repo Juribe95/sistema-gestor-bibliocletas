@@ -1,5 +1,5 @@
 
-@extends('plantilla-tabla-admin')
+@extends('layouts.plantilla-tabla-admin')
 
 @section('title','Prestamos y Devoluciones')
 

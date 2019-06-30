@@ -1,28 +1,45 @@
 <html lang="en">
     <head>
-        <title> @yield('title')</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="w3/w3.css">
-        <link rel="stylesheet" href="w3/w3-theme-black.css">
-        <link rel="stylesheet" href="w3/fontawesome.css">
-        <link rel="stylesheet" href="w3/google-apis.css">
-        <link rel="stylesheet" href="js/app.js">
-        <link rel="stylesheet" href="js/bootstrap.js">
-        <link rel="stylesheet" href="js/all.js">
-        <link rel="stylesheet" href="less/fontawesome.less">
-        <link rel="stylesheet" href="scss/fontawesome.scss">
-        <link rel="stylesheet" href="sprites/solid.svg">
-        <link rel="stylesheet" href="js/jquery-1.10.2.js">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/bootstrap.js') }}" defer></script>
+    <script src="{{ asset('js/all.js') }}" defer></script>
+    <script src="{{ asset('js/jquery-1.10.2.js') }}" defer></script>
+    <script src="{{ asset('js/graficos.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('w3/fontawesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('w3/google-apis.css') }}" rel="stylesheet">
+    <link href="{{ asset('w3/w3-theme-black.css') }}" rel="stylesheet">
+    <link href="{{ asset('w3/w3.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
         <script src="https://code.highcharts.com/highcharts.js"></script>
         <script src="https://code.highcharts.com/modules/data.js"></script>
         <script src="https://code.highcharts.com/modules/exporting.js"></script>
         <script src="https://code.highcharts.com/modules/export-data.js"></script>
-        <link rel="stylesheet" href="js/graficos.js">
-        <script src="js/graficos.js "></script>
+        <link  href="sprites/solid.svg">
+
+        
+        <script href="scss/fontawesome.scss" ></script>
+        <script href="less/fontawesome.less" ></script>
+
 
         <style>
             html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
@@ -34,18 +51,25 @@
             height: inherit;
             }
         </style>
+        
+      
+
+
+
+
     </head>
     <body>
 
-            @section('navbar')
+          
 
-             Navbar
+
+             {{-- Navbar --}}
             <div class="w3-top">
                 <div class="w3-bar w3-theme-sgb1 w3-top w3-left-align w3-large">
                     <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-                    {{--  <a href="inicio-admin" class="w3-bar-item w3-button w3-theme-l1"><img src="https://static.wixstatic.com/media/ba5a3d_ec64afa38c1147a4806a23e2da712627.png/v1/fill/w_240,h_159,al_c,q_80,usm_0.66_1.00_0.01/ba5a3d_ec64afa38c1147a4806a23e2da712627.webp" width="auto" height="60px"></a>  --}}
-                    <a href="inicio-admin" class="w3-bar-item w3-button w3-theme-l1">Bibliocletas</a>
 
+                    <a href="inicio-admin" class="w3-bar-item w3-button w3-theme-l1">Bibliocletas</a>
+                    
                 </div>
             </div>
         @show
@@ -67,14 +91,15 @@
             <a class="w3-bar-item w3-button w3-hover-black" href="autores">Autores</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="editoriales">Editoriales</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="reportes">Reportes</a>
+
     </nav>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
-<div class="w3-main" style="margin-left:250px">
- @show
+<div class="w3-main" style="margin-left:250px"></div>
+ 
 
 
 

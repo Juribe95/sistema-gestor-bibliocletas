@@ -1,5 +1,5 @@
 
-@extends('plantilla-tabla-admin')
+@extends('layouts.plantilla-tabla-admin')
 
 @section('title','Administrar Libros')
 
@@ -7,12 +7,13 @@
 
 
 @section('parte1')
-    <div class="row">
+    <div class="row d-inline">
         <div class="col-md-10">
             <h4>Administrar Libros</h4>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 d-inline">
                 <a href="registrar-libro" class="btn btn-primary btn-sm" role="button" >Registrar Libro</a>
+
         </div>
 
     </div>
@@ -24,7 +25,7 @@
     <table class="table">
         <thead>
             <tr>
-              <th scope="col">Botones</th>
+              <th scope="col">Acciones</th>
               <th scope="col">ISBN</th>
               <th scope="col">Titulo</th>
               <th scope="col">Ejemplar</th>
@@ -33,43 +34,40 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+
+            @foreach ($libs as $item)
+              <tr>
               <th scope="row">
-                <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Añadir Ejemplar</a>
-                <a href="editar-libro" class="btn btn-secondary btn-sm" role="button" >Editar</a>
-                <a href="eliminar-libro" class="btn btn-secondary btn-sm" role="button" >Eliminar</a>
+
+                <a href="{{ route('ejemplar_edit', $item) }}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Añadir Ejemplar</a>
+
+                <a href="" class="btn btn-primary btn-sm" role="button">Editar</a>
+{{-- {{ route('libro.eliminar', $item) }}
+{{ route('libro.edit', $item) }}
+
+ --}}
+                <form action="" method="post" class="d-inline">
+                  @method('DELETE')
+                  @csrf
+                 
+                  <button class="btn btn-primary btn-sm" type="submit">Eliminar</button>
+                </form>
               </th>
-              <td>654984651</td>
-              <td>Caperucita roja</td>
-              <td>5</td>
-              <td>2</td>
-              <td>Infantil</td>
+              <td>{{ $item-> ISBN }}</td>
+              <td>{{ $item-> titulo }}</td>
+              <td>{{ $cont }}
+                {{-- <select name="enviars" class="form-control">
+                  @foreach ($enviars as $element)
+                    <option value="{{ $element->codigo }} " >{{ $element->codigo }}</option>
+                  @endforeach
+                </select> --}}
+                
+              </td>
             </tr>
-            <tr>
-              <th scope="row">
-                <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Añadir Ejemplar</a>
-                <a href="editar-libro" class="btn btn-secondary btn-sm" role="button" aria-pressed="true">Editar</a>
-                <a href="#" class="btn btn-secondary btn-sm" role="button" aria-pressed="true">Eliminar</a>
-             
-            </th>
-              <td>6848462824</td>
-              <td>Harry Potter</td>
-              <td>3</td>
-              <td>3</td>
-              <td>Fantasia</td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Añadir Ejemplar</a>
-                <a href="editar-libro" class="btn btn-secondary btn-sm" role="button" aria-pressed="true">Editar</a>
-                <a href="eliminar-libro" class="btn btn-secondary btn-sm" role="button" aria-pressed="true">Eliminar</a>
-              </th>
-              <td>468465468</td>
-              <td>Los 3 Cerditos</td>
-              <td>6</td>
-              <td>1</td>
-              <td>Infantil</td>
-            </tr>
+            @endforeach
+
+            
+            
           </tbody>
     </table>
   </div>

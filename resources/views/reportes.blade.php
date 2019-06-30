@@ -1,5 +1,5 @@
 
-@extends('Plantilla-admin')
+@extends('layouts.plantilla-tabla-admin')
 
 @section('title','Reportes')
 

@@ -1,5 +1,5 @@
 
-@extends('plantilla-tabla-admin')
+@extends('layouts.plantilla-tabla-admin')
 
 @section('title','Autores')
 
@@ -12,7 +12,7 @@
             <h4>Autores</h4>
         </div>
         <div class="col-md-2">
-                <a href="#" class="btn btn-primary btn-sm" role="button" >Nuevo Autor</a>
+                <a href="autor_registrar" class="btn btn-primary btn-sm" role="button" >Nuevo Autor</a>
         </div>
 
     </div>
@@ -24,39 +24,33 @@
     <table class="table">
         <thead>
             <tr>
-              <th scope="col">Botones</th>
-              <th scope="col">Nombre Autor</th>
+              <th scope="col">Acciones</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido Paterno</th>
+              <th scope="col">Apellido Materno</th>
               
             </tr>
           </thead>
           <tbody>
-            <tr>
+
+            @foreach ($autor as $item)
+              <tr>
               <th scope="row">
-                <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Editar</a>
-                <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Eliminar</a>
+                <a href="{{ route('autor.edit', $item) }}" class="btn btn-primary btn-sm" role="button">Editar</a>
+
+                <form action="{{ route('autor.eliminar', $item) }}" method="post" class="d-inline">
+                  @method('DELETE')
+                  @csrf
+                 
+                  <button class="btn btn-primary btn-sm" type="submit">Eliminar</button>
+                </form>
               </th>
-              <td>Juan Perez</td>
-              
-              
+              <td>{{ $item-> nombre }}</td>
+              <td>{{ $item-> apellido_paterno }}</td>
+              <td>{{ $item-> apellido_materno }}</td>
             </tr>
-            <tr>
-                    <th scope="row">
-                      <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Editar</a>
-                      <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Eliminar</a>
-                    </th>
-                    <td>Juan Pino</td>
-                    
-                    
-                  </tr>
-                  <tr>
-                        <th scope="row">
-                          <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Editar</a>
-                          <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Eliminar</a>
-                        </th>
-                        <td>Juan Parra</td>
-                        
-                        
-                      </tr>
+            @endforeach
+            
           </tbody>
     </table>
   </div>

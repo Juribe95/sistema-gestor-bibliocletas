@@ -1,0 +1,37 @@
+
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\Juan Uribe\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 54
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateLibrosTable extends Migration {
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up() {
+		Schema::create('libros', function (Blueprint $table) {
+				$table->integer('n_serie')->autoIncrement();
+				$table->integer('ISBN');
+				$table->text('titulo');
+				$table->smallInteger('n_paginas');
+				$table->integer('id_editorial');
+				$table->integer('id_estado');
+				$table->timestamps();
+				// $table->foreign('usuario_rut')->references('rut')->on('users');
+			});
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down() {
+		Schema::dropIfExists('libros');
+		Schema::enableForeignKeyConstraints();
+	}
+}
