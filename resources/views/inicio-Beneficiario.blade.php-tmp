@@ -1,4 +1,5 @@
 
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\Juan Uribe\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 54
 @extends('plantilla-Beneficiario')
 
 @section('title','Inicio Beneficiario')

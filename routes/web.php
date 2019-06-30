@@ -31,7 +31,7 @@ Route::get('/categorias', 'PageController@categorias')->name('categorias');
 Route::get('/autores', 'PageController@autores')->name('autores');
 Route::get('/editoriales', 'PageController@editoriales')->name('editoriales');
 Route::get('/reportes', 'PageController@reportes')->name('reportes');
-Route::get('/inicio-beneficiario', 'PageController@inicio_beneficiario')->name('inicio-beneficiario');
+Route::get('/inicio-Beneficiario', 'PageController@inicio_beneficiario')->name('inicio-beneficiario');
 Route::get('/historial-beneficiario', 'PageController@historial_beneficiario')->name('historial-beneficiario');
 Route::get('/inicio-voluntario', 'PageController@inicio_voluntario')->name('inicio-voluntario');
 Route::get('/catalogo-voluntario', 'PageController@catalogo_voluntario')->name('catalogo-voluntario');

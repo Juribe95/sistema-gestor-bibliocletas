@@ -1,3 +1,5 @@
+
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\Juan Uribe\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 54
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -36,7 +38,7 @@
         <script src="https://code.highcharts.com/modules/export-data.js"></script>
         <link  href="sprites/solid.svg">
 
-        
+
         <script href="scss/fontawesome.scss" ></script>
         <script href="less/fontawesome.less" ></script>
 
@@ -75,13 +77,13 @@
             <h4 class="w3-bar-item"><b>Menu</b></h4>
             <a href="">
                 @guest
-                            
+
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            
+
                             @if (Route::has('register'))
-                                
+
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                
+
                             @endif
                         @else
                             <li class="nav-item dropdown">
@@ -107,14 +109,14 @@
             <a class="w3-bar-item w3-button w3-hover-black" href="{{ route('inicio-beneficiario') }}">Inicio</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="">Catalogo de libros</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="">Historial de Pedidos</a>
-            
+
 
             <!-- Right Side Of Navbar -->
                     <ul class="w3-bar-item w3-button w3-hover-black">
                         <!-- Authentication Links -->
-                        
+
                     </ul>
-            
+
 
     </nav>
 
