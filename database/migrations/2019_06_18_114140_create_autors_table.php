@@ -17,7 +17,7 @@ class CreateAutorsTable extends Migration
             $table->bigIncrements('id')->autoIncrement();
             $table->text('nombre');
             $table->text('apellido_paterno');
-            $table->text('apellido_materno');
+            $table->text('apellido_materno')->nullable();
             $table->timestamps();
             // $table->foreign('usuario_rut')->references('rut')->on('users');
         });

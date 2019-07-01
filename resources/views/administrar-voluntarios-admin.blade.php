@@ -11,7 +11,7 @@
             <h4>Administrar Voluntarios</h4>
         </div>
         <div class="col-md-2">
-                <a href="registrar-voluntario" class="btn btn-primary btn-sm" role="button" >Registrar Voluntario</a>
+                <a href="{{ route('register') }}" class="btn btn-primary btn-sm" role="button" >Registrar Voluntario</a>
         </div>
 
     </div>

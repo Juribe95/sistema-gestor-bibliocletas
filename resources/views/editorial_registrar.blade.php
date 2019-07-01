@@ -36,7 +36,7 @@
 
 								@error('nombre_editorial')
 									<div class="alert alert-success" role="alert">
-										El nombre es obligatorio
+										El nombre No se puede repetir o estar vacio
 									</div>
 								@enderror
 

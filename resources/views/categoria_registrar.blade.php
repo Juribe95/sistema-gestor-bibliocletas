@@ -41,9 +41,10 @@
 
 								@error('nombre_categoria')
 									<div class="alert alert-success" role="alert">
-										El Nombre de Categoria es obligatorio
+										El nombre de categoria no se puede repetir o dejar vacio
 									</div>
 								@enderror
+								
 
 
 							</div>

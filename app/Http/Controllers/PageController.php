@@ -27,6 +27,7 @@ class PageController extends Controller
     {
         $libs = App\Libro::all();
         $eje = App\Ejemplar::all();
+        $ct = 
 
         $cont = $eje->count();
         
@@ -176,7 +177,7 @@ class PageController extends Controller
        //return $request->all();
 
         $request->validate([
-         'ISBN'=>'required',
+         'ISBN'=>['required','min:13','max:13'],
          'titulo'=>'required',
          'n_paginas'=>'required',
          'id_editorial'=>'required',
@@ -212,11 +213,12 @@ class PageController extends Controller
        //return $request->all();
 
         $request->validate([
-         'nombre_categoria'=>'required'
+         'nombre_categoria'=>['required','unique:categorias']
         ]);
+        
 
         $nueva_cate = new App\Categoria;
-       //$nueva_cate->id = $request->id;
+        //$nueva_cate->id = $request->id;
         $nueva_cate->nombre_categoria = $request->nombre_categoria;
         $nueva_cate->save();
 
@@ -249,7 +251,7 @@ class PageController extends Controller
         $cateElim = App\Categoria::findOrFail($id);
         $cateElim->delete();
 
-        return back()->with('mensaje', 'Nota Eliminada');
+        return back()->with('mensaje', 'Categoria Eliminada');
     }
 
     //end categoria
@@ -266,7 +268,7 @@ class PageController extends Controller
         $request->validate([
          'nombre'=>'required',
          'apellido_paterno'=>'required',
-         'apellido_materno'=>'required'
+         
         ]);
 
         $nuevo_autor = new App\Autor;
@@ -328,7 +330,7 @@ class PageController extends Controller
        //return $request->all();
 
         $request->validate([
-         'nombre_editorial'=>'required'
+         'nombre_editorial'=>['required','unique:editorials']
         ]);
 
 
@@ -378,7 +380,7 @@ class PageController extends Controller
            //return $request->all();
 
            $request->validate([
-           'codigo'=>'required'
+           'codigo'=>['required','unique:ejemplars']
            ]);
 
            $ejem = new App\Ejemplar;

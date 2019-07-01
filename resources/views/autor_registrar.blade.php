@@ -61,11 +61,7 @@
 										El Apellido Paterno es obligatorio
 									</div>
 								@enderror
-								@error('apellido_materno')
-									<div class="alert alert-success" role="alert">
-										El Apellido Materno es obligatorio
-									</div>
-								@enderror
+								
 							</div>
 						</form>
 
