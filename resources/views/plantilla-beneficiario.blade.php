@@ -105,7 +105,7 @@
                         @endguest
             </a>
             <a class="w3-bar-item w3-button w3-hover-black" href="{{ route('inicio-beneficiario') }}">Inicio</a>
-            <a class="w3-bar-item w3-button w3-hover-black" href="">Catalogo de libros</a>
+            <a class="w3-bar-item w3-button w3-hover-black" href="{{ route('catalogo-beneficiario') }}">Catalogo de libros</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="">Historial de Pedidos</a>
             
 
@@ -170,7 +170,7 @@
                   </div>
 
                   <div class="w3-container w3-theme-l1">
-                    <p><i class="fa fa-copyright" aria-hidden="true"></i> SGB</a></p>
+                    <p><i class="fa fa-copyright" aria-hidden="true"></i> SGB</p>
                   </div>
             </center>
             </footer>

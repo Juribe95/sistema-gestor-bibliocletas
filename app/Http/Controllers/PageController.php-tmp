@@ -79,7 +79,21 @@ class PageController extends Controller {
 	}
 
 	public function catalogo_voluntario() {
-		return view('catalogo-voluntario');
+		$libs = App\Libro::all();
+		$eje  = App\Ejemplar::all();
+
+		$cont = $eje->count();
+
+		return view('catalogo-voluntario', compact('libs', 'cont'));
+	}
+
+	public function catalogo_beneficiario() {
+		$libs = App\Libro::all();
+		$eje  = App\Ejemplar::all();
+
+		$cont = $eje->count();
+
+		return view('catalogo-beneficiario', compact('libs', 'cont'));
 	}
 
 	public function historial_voluntario() {
@@ -102,7 +116,12 @@ class PageController extends Controller {
 	}
 
 	public function registrar_libro() {
-		return view('registrar-libro');
+		$edit   = App\Editorial::all();
+		$autor  = App\Autor::all();
+		$estado = App\Estado::all();
+		$cate   = App\Categoria::all();
+
+		return view('registrar-libro', compact('edit', 'autor', 'estado', 'cate'));
 	}
 
 	public function categoria_registrar() {
@@ -123,6 +142,30 @@ class PageController extends Controller {
 		$n_serie = App\Libro::findOrFail($n_serie);
 		return view('agregar-ejemplar', compact('n_serie', 'esta'));
 	}
+
+	//Libros
+
+	public function insertar_libro(Request $request) {
+		//return $request->all();
+
+		$request->validate([
+				'isbn'             => 'required',
+				'titulo'           => 'required',
+				'n_paginas'        => 'required',
+				'nombre_categoria' => 'required',
+				'nombre_categoria' => 'required',
+				'nombre_categoria' => 'required'
+			]);
+
+		$nueva_cate = new App\Categoria;
+		//$nueva_cate->id = $request->id;
+		$nueva_cate->nombre_categoria = $request->nombre_categoria;
+		$nueva_cate->save();
+
+		return back()->with('mensaje', 'Categoria Agregada');
+	}
+
+	//End Libros
 
 	// funciones para la bases de datos
 
@@ -185,6 +228,10 @@ class PageController extends Controller {
 		$nuevo_autor->save();
 
 		return back()->with('mensaje', 'Autor Agregado');
+	}
+
+	public function recu_ejemplar(Request $request) {
+		return $request->all();
 	}
 
 	public function update_autor(Request $request, $id) {

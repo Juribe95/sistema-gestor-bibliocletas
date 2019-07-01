@@ -171,11 +171,11 @@
         <footer id="myFooter">
             <center>
                 <div class="w3-container w3-theme-sgb1 w3-padding-32">
-                    <img src="img/logosgb.png" class="d-inline-block align-top" alt="">
+                    <img src="https://static.wixstatic.com/media/ba5a3d_ec64afa38c1147a4806a23e2da712627.png/v1/fill/w_480,h_318,al_c,q_80,usm_0.66_1.00_0.01/ba5a3d_ec64afa38c1147a4806a23e2da712627.webp" height="60px" width="120px" class=" align-top" class="d-inline-block align-top" alt="">
                   </div>
 
                   <div class="w3-container w3-theme-l1">
-                    <p><i class="fa fa-copyright" aria-hidden="true"></i> SGB</a></p>
+                    <p><i class="fa fa-copyright" aria-hidden="true"></i> SGB</p>
                   </div>
             </center>
             </footer>

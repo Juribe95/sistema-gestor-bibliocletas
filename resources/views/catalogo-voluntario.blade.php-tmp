@@ -1,5 +1,6 @@
 
-@extends('plantilla-beneficiario')
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\Juan Uribe\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 54
+@extends('plantilla-voluntario')
 
 @section('title','Catalogo de Libros')
 
@@ -12,7 +13,7 @@
             <h4>Catalogo de Libros</h4>
         </div>
         <div class="col-md-2 d-inline">
-                
+
 
         </div>
 
@@ -41,7 +42,7 @@
 
                 <a href="" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Reservar</a>
 
-                
+
                 <form action="" method="post" class="d-inline">
                   @method('DELETE')
                   @csrf
@@ -55,13 +56,13 @@
                     <option value="{{ $element->codigo }} " >{{ $element->codigo }}</option>
                   @endforeach
                 </select> --}}
-                
+
               </td>
             </tr>
             @endforeach
 
-            
-            
+
+
           </tbody>
     </table>
   </div>

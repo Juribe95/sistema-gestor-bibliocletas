@@ -28,9 +28,6 @@ class PageController extends Controller
         $libs = App\Libro::all();
         $eje = App\Ejemplar::all();
 
-
-
-
         $cont = $eje->count();
         
         return view('administrar-libros-admin', compact('libs', 'cont'));
@@ -96,7 +93,22 @@ class PageController extends Controller
 
     public function catalogo_voluntario()
     {
-        return view('catalogo-voluntario');
+        $libs = App\Libro::all();
+        $eje = App\Ejemplar::all();
+
+        $cont = $eje->count();
+        
+        return view('catalogo-voluntario', compact('libs', 'cont'));
+    }
+
+    public function catalogo_beneficiario()
+    {
+        $libs = App\Libro::all();
+        $eje = App\Ejemplar::all();
+
+        $cont = $eje->count();
+        
+        return view('catalogo-beneficiario', compact('libs', 'cont'));
     }
 
     public function historial_voluntario()
@@ -124,7 +136,12 @@ class PageController extends Controller
 
     public function registrar_libro()
     {
-        return view('registrar-libro');
+        $edit = App\Editorial::all();
+        $autor = App\Autor::all();
+        $estado = App\Estado::all();
+        $cate = App\Categoria::all();
+
+        return view('registrar-libro', compact('edit', 'autor', 'estado', 'cate'));
     }
 
     public function categoria_registrar()
@@ -151,6 +168,36 @@ class PageController extends Controller
         $n_serie = App\Libro::findOrFail($n_serie);
         return view('agregar-ejemplar', compact('n_serie', 'esta'));
     }
+
+    //Libros
+
+    public function insertar_libro(Request $request)
+    {
+       //return $request->all();
+
+        $request->validate([
+         'ISBN'=>'required',
+         'titulo'=>'required',
+         'n_paginas'=>'required',
+         'id_editorial'=>'required',
+         'id_estado'=>'required',
+         'id_autor'=>'required'
+        ]);
+
+        $nuevo_libro = new App\Libro;
+       //$nueva_cate->id = $request->id;
+        $nuevo_libro->ISBN = $request->ISBN;
+        $nuevo_libro->titulo = $request->titulo;
+        $nuevo_libro->n_paginas = $request->n_paginas;
+        $nuevo_libro->id_editorial = $request->id_editorial;
+        $nuevo_libro->id_estado = $request->id_estado;
+        $nuevo_libro->id_autor = $request->id_autor;
+        $nuevo_libro->save();
+
+        return back()->with('mensaje', 'Libro Insertado');
+    }
+
+    //End Libros
     
    
    
@@ -175,6 +222,8 @@ class PageController extends Controller
 
         return back()->with('mensaje', 'Categoria Agregada');
     }
+
+
 
 
     public function update_categoria(Request $request, $id)
@@ -227,6 +276,11 @@ class PageController extends Controller
         $nuevo_autor->save();
 
         return back()->with('mensaje', 'Autor Agregado');
+    }
+
+    public function recu_ejemplar(Request $request)
+    {
+        return $request->all();
     }
 
 

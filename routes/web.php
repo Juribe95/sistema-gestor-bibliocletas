@@ -34,7 +34,10 @@ Route::get('/reportes', 'PageController@reportes')->name('reportes');
 Route::get('/inicio-Beneficiario', 'PageController@inicio_beneficiario')->name('inicio-beneficiario');
 Route::get('/historial-beneficiario', 'PageController@historial_beneficiario')->name('historial-beneficiario');
 Route::get('/inicio-voluntario', 'PageController@inicio_voluntario')->name('inicio-voluntario');
+
 Route::get('/catalogo-voluntario', 'PageController@catalogo_voluntario')->name('catalogo-voluntario');
+Route::get('/catalogo-beneficiario', 'PageController@catalogo_beneficiario')->name('catalogo-beneficiario');
+
 Route::get('/historial-voluntario', 'PageController@historial_voluntario')->name('historial-voluntario');
 Route::get('/agregar-ejemplar', 'PageController@agregar_ejemplar')->name('agregar-ejemplar');
 Route::get('/editar-libro', 'PageController@editar_libro')->name('editar-libro');
@@ -69,10 +72,15 @@ Route::put('/agregar-ejemplar/{n_serie}', 'PageController@update_ejemplar')->nam
 
 //rutas de insertar db
 
+Route::post('/registrar-libro', 'PageController@insertar_libro')->name('libro.insertar_libro');
+
 Route::post('/categoria_registrar', 'PageController@insertar_cate')->name('categorias.insertar_cate');
 Route::post('/autor_registrar', 'PageController@insertar_autor')->name('autors.insertar_autor');
 Route::post('/editorial_registrar', 'PageController@insertar_edit')->name('editorial.insertar_edit');
 Route::post('/agregar-ejemplar/', 'PageController@insertar_ejemplar')->name('ejemplar.insertar_ejemplar');
+
+
+Route::post('/catalogo-beneficiario', 'PageController@recu_ejemplar')->name('recu_ejemplar');
 
 
 //rutas para eliminar

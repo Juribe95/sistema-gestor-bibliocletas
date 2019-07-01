@@ -20,8 +20,9 @@ class CreateLibrosTable extends Migration
             $table->smallInteger('n_paginas');
             $table->integer('id_editorial');
             $table->integer('id_estado');
+            $table->integer('id_autor');
             $table->timestamps();
-            // $table->foreign('usuario_rut')->references('rut')->on('users');
+            
         });
     }
 
