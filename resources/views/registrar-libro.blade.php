@@ -23,7 +23,7 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label>ISBN</label>
-                <input  class="form-control" name="ISBN" id="isbn" placeholder="ISBN">
+                <input  class="form-control" name="ISBN" id="ISBN" placeholder="ISBN">
             </div>
             <div class="form-group col-md-6">
                 <label for="">Titulo</label>
@@ -104,6 +104,16 @@
                 {{ session('mensaje') }}
             </div>
             @endif
+            @error('ISBN')
+                <div class="alert alert-danger" role="alert">
+                    El ISBN debe ser entre 10 y 13 caracteres
+                </div>
+            @enderror
+            @error('titulo')
+                <div class="alert alert-danger" role="alert">
+                    El titulo no debe estar vacio
+                </div>
+            @enderror
             
         </div>
 

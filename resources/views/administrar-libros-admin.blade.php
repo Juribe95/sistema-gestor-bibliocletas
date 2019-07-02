@@ -8,10 +8,10 @@
 
 @section('parte1')
     <div class="row d-inline">
-        <div class="col-md-10">
+        <div class="col-md-8">
             <h4>Administrar Libros</h4>
         </div>
-        <div class="col-md-2 d-inline">
+        <div class="col-md-4">
                 <a href="registrar-libro" class="btn btn-primary btn-sm" role="button" >Registrar Libro</a>
 
         </div>
@@ -56,13 +56,7 @@
               <td>{{ $item-> ISBN }}</td>
               <td>{{ $item-> titulo }}</td>
               <td>{{ $cont }}
-                {{-- <select name="enviars" class="form-control">
-                  @foreach ($enviars as $element)
-                    <option value="{{ $element->codigo }} " >{{ $element->codigo }}</option>
-                  @endforeach
-                </select> --}}
-                
-              </td>
+              
             </tr>
             @endforeach
 

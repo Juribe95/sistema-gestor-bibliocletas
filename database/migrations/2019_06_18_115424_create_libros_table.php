@@ -18,9 +18,16 @@ class CreateLibrosTable extends Migration
             $table->integer('ISBN');
             $table->text('titulo');
             $table->smallInteger('n_paginas');
-            $table->integer('id_editorial');
-            $table->integer('id_estado');
-            $table->integer('id_autor');
+            $table->integer('id_editorial')->unsigned();
+            $table->integer('id_estado')->unsigned();
+            $table->integer('id_autor')->unsigned();
+            $table->integer('id_categoria')->unsigned();
+
+            $table->foreign('id_editorial')->references('id')->on('editorials');
+            $table->foreign('id_estado')->references('id')->on('estados');
+            $table->foreign('id_autor')->references('id')->on('autors');
+            $table->foreign('id_categoria')->references('id')->on('categorias');
+
             $table->timestamps();
             
         });

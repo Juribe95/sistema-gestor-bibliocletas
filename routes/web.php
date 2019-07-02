@@ -50,7 +50,7 @@ Route::get('/editorial_registrar', 'PageController@editorial_registrar')->name('
 
 
 //buscar datos
-//Route::post('/administrar-libros-admin/{n_serie}', 'PageController@enviarnserie')->name('enviarnserie');
+Route::post('/administrar-libros-admin/{n_serie}', 'PageController@enviarnserie')->name('enviarnserie');
 
 
 //rutas editar

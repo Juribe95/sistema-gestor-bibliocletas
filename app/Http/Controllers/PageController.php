@@ -27,7 +27,7 @@ class PageController extends Controller
     {
         $libs = App\Libro::all();
         $eje = App\Ejemplar::all();
-        $ct = 
+        
 
         $cont = $eje->count();
         
@@ -177,12 +177,13 @@ class PageController extends Controller
        //return $request->all();
 
         $request->validate([
-         'ISBN'=>['required','min:13','max:13'],
-         'titulo'=>'required',
-         'n_paginas'=>'required',
-         'id_editorial'=>'required',
-         'id_estado'=>'required',
-         'id_autor'=>'required'
+         'ISBN'=>['required','min:10','max:11'],
+         'titulo'=>['required'],
+         'n_paginas'=>['required'],
+         'id_editorial'=>['required'],
+         'id_estado'=>['required'],
+         'id_autor'=>['required'],
+         'id_categoria'=>['required']
         ]);
 
         $nuevo_libro = new App\Libro;
@@ -193,6 +194,7 @@ class PageController extends Controller
         $nuevo_libro->id_editorial = $request->id_editorial;
         $nuevo_libro->id_estado = $request->id_estado;
         $nuevo_libro->id_autor = $request->id_autor;
+        $nuevo_libro->id_categoria = $request->id_categoria;
         $nuevo_libro->save();
 
         return back()->with('mensaje', 'Libro Insertado');
@@ -424,10 +426,12 @@ class PageController extends Controller
     public function enviarnserie($n_serie)
     {
 
-        return $n_serie;
-        $contejem = DB::select('select codigo from ejemplars where N_Serie_Libro = ?', [$n_serie])->get();
-        $enviars = $contejem->count();
-        return view('administrar-libros-admin', compact('enviars'));
+        $nserie = App\Ejemplar::findOrFail($n_serie);
+        $contejem = DB::select('select codigo from ejemplars where N_Serie_Libro = ?', [$nserie]);
+        $contejem = $contejem->count();
+        return view('administrar-libros-admin', compact('contejem'));
+
+
     }
 
     //End Libos
