@@ -14,7 +14,7 @@ class CreateCategoriasTable extends Migration
     public function up()
     {
         Schema::create('categorias', function (Blueprint $table) {
-            $table->bigIncrements('id')->autoIncrement();
+            $table->integer('id')->autoIncrement();
             $table->text('nombre_categoria');
             $table->timestamps();
             // $table->foreign('usuario_rut')->references('rut')->on('users');
@@ -29,5 +29,6 @@ class CreateCategoriasTable extends Migration
     public function down()
     {
         Schema::dropIfExists('categorias');
+        Schema::enableForeignKeyConstraints();
     }
 }

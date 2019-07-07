@@ -23,7 +23,7 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label>ISBN</label>
-                <input  class="form-control" name="ISBN" id="ISBN" placeholder="ISBN">
+                <input type="number" class="form-control" name="ISBN" id="ISBN" placeholder="ISBN">
             </div>
             <div class="form-group col-md-6">
                 <label for="">Titulo</label>
@@ -33,7 +33,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label>N° Paginas</label>
-                <input  class="form-control" name="n_paginas" id="n_paginas" placeholder="N° Paginas">
+                <input type="number"  class="form-control" name="n_paginas" id="n_paginas" placeholder="N° Paginas">
             </div>
             <div class="form-group col-md-6">
                 <label>Editorial</label>

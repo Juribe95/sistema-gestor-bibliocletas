@@ -14,7 +14,7 @@ class CreateAutorsTable extends Migration
     public function up()
     {
         Schema::create('autors', function (Blueprint $table) {
-            $table->bigIncrements('id')->autoIncrement();
+            $table->integer('id')->autoIncrement();
             $table->text('nombre');
             $table->text('apellido_paterno');
             $table->text('apellido_materno')->nullable();
@@ -31,5 +31,6 @@ class CreateAutorsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('autors');
+        Schema::enableForeignKeyConstraints();
     }
 }

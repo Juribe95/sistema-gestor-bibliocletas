@@ -177,7 +177,7 @@ class PageController extends Controller
        //return $request->all();
 
         $request->validate([
-         'ISBN'=>['required','min:10','max:11'],
+         'ISBN'=>['required','min:10','max:13'],
          'titulo'=>['required'],
          'n_paginas'=>['required'],
          'id_editorial'=>['required'],
