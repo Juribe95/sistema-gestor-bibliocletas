@@ -17,6 +17,9 @@ class CreateRolsTable extends Migration
 
             $table->increments('id')->unsigned();
             $table->text('nombre_rol');
+            //$table->set('nombre_rol', ['Administrador', 'Voluntario','Beneficiario']);
+            //
+            
             $table->timestamps();
         });
     }

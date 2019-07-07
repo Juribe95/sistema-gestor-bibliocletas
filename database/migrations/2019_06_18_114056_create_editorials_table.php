@@ -14,7 +14,7 @@ class CreateEditorialsTable extends Migration
     public function up()
     {
         Schema::create('editorials', function (Blueprint $table) {
-            $table->bigIncrements('id')->autoIncrement();
+            $table->integer('id')->autoIncrement();
             $table->text('nombre_editorial');
             $table->timestamps();
             // $table->foreign('usuario_rut')->references('rut')->on('users');
