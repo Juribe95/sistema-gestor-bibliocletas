@@ -20,8 +20,12 @@ class CreatePrestamosTable extends Migration
             $table->date('fecha_entrega');
             $table->text('dias_retraso');
             $table->text('usuario_rut');
-            $table->timestamps();
+            $table->integer('prestamo_n_serie');
+            
+
+            $table->foreign('prestamo_n_serie')->references('n_serie')->on('libros');
            // $table->foreign('usuario_rut')->references('rut')->on('users');
+           $table->timestamps();
         });
     }
 

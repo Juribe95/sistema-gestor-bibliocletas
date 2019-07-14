@@ -51,9 +51,11 @@ class PageController extends Controller
 
     public function prestamos_devoluciones()
     {
-        return view('prestamos-devoluciones');
-    }
-
+        $newp = App\Prestamo::all();
+        $lib = App\Libro::all();
+        
+        return view('prestamos-devoluciones', compact('newp', 'lib'));
+}
     public function categorias()
     {
         $cate = App\Categoria::all();
@@ -160,14 +162,29 @@ class PageController extends Controller
         return view('editorial_registrar');
     }
 
+
+
+// Prestamo de libros
+
     public function nuevo_prestamo()
     {
+        
         return view('nuevo_prestamo');
     }
+
+
+
     public function confirmar_prestamo()
     {
         return view('confirmar_prestamo');
     }
+
+
+// Fin Prestamo de libros
+
+
+
+
 
     public function cap_libro($n_serie)
     {
