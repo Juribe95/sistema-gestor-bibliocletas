@@ -21,7 +21,7 @@ class CreatePrestamosTable extends Migration
             $table->text('dias_retraso');
             $table->text('usuario_rut');
             $table->timestamps();
-            $table->foreign('usuario_rut')->references('rut')->on('users');
+           // $table->foreign('usuario_rut')->references('rut')->on('users');
         });
     }
 

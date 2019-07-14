@@ -160,7 +160,14 @@ class PageController extends Controller
         return view('editorial_registrar');
     }
 
-
+    public function nuevo_prestamo()
+    {
+        return view('nuevo_prestamo');
+    }
+    public function confirmar_prestamo()
+    {
+        return view('confirmar_prestamo');
+    }
 
     public function cap_libro($n_serie)
     {

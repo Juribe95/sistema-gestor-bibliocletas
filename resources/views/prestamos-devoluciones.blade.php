@@ -12,7 +12,7 @@
             <h4>Prestamos y Devoluciones</h4>
         </div>
         <div class="col-md-2">
-                <a href="#" class="btn btn-primary btn-sm" role="button" >Nuevo Prestamo</a>
+                <a href="nuevo_prestamo" class="btn btn-primary btn-sm" role="button" >Nuevo Prestamo</a>
         </div>
 
     </div>
