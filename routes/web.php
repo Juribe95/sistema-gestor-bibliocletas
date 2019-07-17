@@ -50,6 +50,8 @@ Route::get('/editorial_registrar', 'PageController@editorial_registrar')->name('
 Route::get('/nuevo_prestamo', 'PageController@nuevo_prestamo')->name('nuevo_prestamo');
 Route::get('/confirmar_prestamo', 'PageController@confirmar_prestamo')->name('confirmar_prestamo');
 
+Route::get('/dev', 'PageController@obtenernombre')->name('obtenernombre');
+
 
 
 //buscar datos

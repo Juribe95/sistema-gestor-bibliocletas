@@ -8,11 +8,15 @@ use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
+    
+
+
     public function __construct()
     {
         $this->middleware('auth');
     }
 
+    
     public function inicio()
     {
         return view('auth.login');

@@ -35,13 +35,25 @@
     <tbody>
 
      @foreach ($newp as $element)
+      
+     @php
+
+     $nserie = $element->prestamo_n_serie;
+     $rut = $element->usuario_rut;
+     $namelibro = obtenernombre($nserie);
+     $correo = obtenerdatosUser($rut);
+     $is = obtenerisbn($nserie);
+     @endphp
+      
        <tr>
         <th scope="row">
           <a href="#" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Devuelto</a>
         </th>
-        <td>ISBN</td>
-        <td>Caperucita roja</td>
-        <td>Juan Perez</td>
+        <td>{{ $is }}</td>
+        <td>
+          {{ $namelibro }}
+      </td>
+        <td>{{ $correo }}</td>
         <td>{{ $element->fecha_prestamo }}</td>
         <td>{{ $element->fecha_devolucion }}</td>
       </tr>

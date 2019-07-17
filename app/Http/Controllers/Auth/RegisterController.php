@@ -23,10 +23,7 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    
 
     /**
      * Where to redirect users after registration.
