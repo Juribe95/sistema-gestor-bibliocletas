@@ -80,7 +80,7 @@
                             
                             @if (Route::has('register'))
                                 
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    
                                 
                             @endif
                         @else
@@ -105,6 +105,7 @@
                         @endguest
             </a>
             <a class="w3-bar-item w3-button w3-hover-black" href="{{ route('inicio-admin') }}">Inicio</a>
+            
             <a class="w3-bar-item w3-button w3-hover-black" href="{{ route('administrar-libros-admin') }}">Administrar Libros</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="{{ route('administrar-voluntarios-admin') }}">Administrar Voluntarios</a>
             <a class="w3-bar-item w3-button w3-hover-black" href="{{ route('administrar-beneficiarios-admin') }}">Administrar Beneficiarios</a>

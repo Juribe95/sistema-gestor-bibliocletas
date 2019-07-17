@@ -17,11 +17,11 @@ Auth::routes();
 
 
 Route::get('/', 'HomeController@index')->name('home');
-//Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true]);
 
 // pageController
 //Route::get('/', 'PageController@inicio')->name('login');
-Route::get('/inicio-admin', 'PageController@inicio_admin')->name('inicio-admin');
+Route::get('/inicio-admin', 'PageController@inicio_admin')->name('inicio-admin')->middleware('verified');
 
 Route::get('/administrar-libros-admin', 'PageController@administrar_libros_admin')->name('administrar-libros-admin');
 Route::get('/administrar-voluntarios-admin', 'PageController@administrar_voluntarios_admin')->name('administrar-voluntarios-admin');
@@ -46,8 +46,10 @@ Route::get('/registrar-libro', 'PageController@registrar_libro')->name('registra
 Route::get('/categoria_registrar', 'PageController@categoria_registrar')->name('categoria_registrar');
 Route::get('/autor_registrar', 'PageController@autor_registrar')->name('autor_registrar');
 Route::get('/editorial_registrar', 'PageController@editorial_registrar')->name('editorial_registrar');
+
 Route::get('/nuevo_prestamo', 'PageController@nuevo_prestamo')->name('nuevo_prestamo');
 Route::get('/confirmar_prestamo', 'PageController@confirmar_prestamo')->name('confirmar_prestamo');
+
 
 
 //buscar datos

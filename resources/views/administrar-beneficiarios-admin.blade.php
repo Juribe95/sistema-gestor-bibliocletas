@@ -12,7 +12,8 @@
             <h4>Administrar Beneficiario</h4>
         </div>
         <div class="col-md-2">
-                <a href="register" class="btn btn-primary btn-sm" role="button" >Registrar Beneficiario</a>
+                <a href="{{ route('register') }}" class="btn btn-primary btn-sm" role="button" >Registrar Beneficiario</a>
+                
         </div>
 
     </div>

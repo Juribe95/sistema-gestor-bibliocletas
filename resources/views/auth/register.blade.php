@@ -1,7 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.plantilla-tabla-admin')
 
 @section('content')
-<div class="container">
+@section('parte1')
+    <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -151,4 +152,6 @@
         </div>
     </div>
 </div>
+@endsection
+
 @endsection

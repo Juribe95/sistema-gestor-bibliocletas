@@ -23,6 +23,11 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Where to redirect users after registration.
      *
@@ -35,10 +40,7 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+    
 
     /**
      * Get a validator for an incoming registration request.
@@ -56,7 +58,7 @@ class RegisterController extends Controller
             'telefono' => ['required', 'string','min:9', 'max:9'],
             'id_rol' => ['required', 'string','min:1', 'max:1'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
 
