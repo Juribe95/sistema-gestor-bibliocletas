@@ -5,9 +5,14 @@
 
 @section('content')
     @section('parte1')
-    <h1 class="w3-text-teal embed-responsive-item">Inicio de Voluntario</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta alias optio, quisquam blanditiis, molestias unde ut quibusdam aperiam fugit quo rem ipsam laborum? Tempore reiciendis, veritatis voluptatum placeat laborum quis?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum sit quia pariatur similique voluptates facere deserunt ex, beatae odio autem dolor, ullam provident commodi dignissimos labore officiis fugiat qui eum.</p>
+    <div class="container">
+    	<h1 class="w3-text-teal embed-responsive-item">Bienvenido a la Biblioteca de la agrupacion abanico</h1>
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/embed/LSlGfZfM3Us" frameborder="0" all="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    </div>
+    
+
 
     @endsection
 @endsection

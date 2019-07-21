@@ -11,17 +11,21 @@ class PageController extends Controller
     
 
 
+    
+    
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    
+
+
     public function inicio()
     {
         return view('auth.login');
     }
 
+    
     public function inicio_admin()
     {
         return view('inicio-admin');
@@ -172,8 +176,7 @@ class PageController extends Controller
 
     public function nuevo_prestamo()
     {
-        
-        return view('nuevo_prestamo');
+            return view('nuevo_prestamo');
     }
 
 
@@ -282,6 +285,12 @@ class PageController extends Controller
         $cateElim->delete();
 
         return back()->with('mensaje', 'Categoria Eliminada');
+    }
+
+    public function recuperar_libro(Request $request)
+    {
+        echo "string";
+        return view('inicio-admin');
     }
 
     //end categoria
@@ -410,7 +419,7 @@ class PageController extends Controller
            //return $request->all();
 
            $request->validate([
-           'codigo'=>['required','unique:ejemplars']
+           'codigo'=>['required']
            ]);
 
            $ejem = new App\Ejemplar;
@@ -460,6 +469,12 @@ class PageController extends Controller
         return view('administrar-libros-admin', compact('contejem'));
 
 
+    }
+
+    public function recuperar_libro($n_serie){
+        $libr = App\Libro::findOrFail($n_serie);
+        
+        return view('administrar-libros-admin', compact('libr'));
     }
 
     //End Libos

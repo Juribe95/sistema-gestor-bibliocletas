@@ -29,5 +29,17 @@ class DatabaseSeeder extends Seeder
        DB::table('estados')->insert([
             'nombre_estado' => 'Prestado'
         ]);
+
+
+       DB::table('users')->insert([
+            'rut' => 'admin',
+            'name' => 'admin',
+            'apellido_paterno' => 'admin',
+            'apellido_materno' => 'admin',
+            'email' => 'admin@admin.cl',
+            'password' => '$2y$10$oOE/WBoqe262WpiXv69vEOUdqa2DQuUDJwye1VbnwcLBd2Z9D1Eu2',//la pass es admin
+            'telefono' => '123456789',
+            'id_rol' => '1'
+        ]);
     }
 }

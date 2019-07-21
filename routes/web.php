@@ -20,8 +20,8 @@ Route::get('/', 'HomeController@index')->name('home');
 Auth::routes(['verify' => true]);
 
 // pageController
-//Route::get('/', 'PageController@inicio')->name('login');
-Route::get('/inicio-admin', 'PageController@inicio_admin')->name('inicio-admin')->middleware('verified');
+//Route::get('/', 'PageController@inicio')->name('login');->middleware('verified')
+Route::get('/inicio-admin', 'PageController@inicio-admin')->name('inicio-admin');
 
 Route::get('/administrar-libros-admin', 'PageController@administrar_libros_admin')->name('administrar-libros-admin');
 Route::get('/administrar-voluntarios-admin', 'PageController@administrar_voluntarios_admin')->name('administrar-voluntarios-admin');
@@ -50,7 +50,7 @@ Route::get('/editorial_registrar', 'PageController@editorial_registrar')->name('
 Route::get('/nuevo_prestamo', 'PageController@nuevo_prestamo')->name('nuevo_prestamo');
 Route::get('/confirmar_prestamo', 'PageController@confirmar_prestamo')->name('confirmar_prestamo');
 
-Route::get('/dev', 'PageController@obtenernombre')->name('obtenernombre');
+Route::get('/confirmar_prestamo/{n_serie}', 'PageController@recuperar_libro')->name('recuperar_libro');
 
 
 
@@ -83,7 +83,6 @@ Route::post('/categoria_registrar', 'PageController@insertar_cate')->name('categ
 Route::post('/autor_registrar', 'PageController@insertar_autor')->name('autors.insertar_autor');
 Route::post('/editorial_registrar', 'PageController@insertar_edit')->name('editorial.insertar_edit');
 Route::post('/agregar-ejemplar/', 'PageController@insertar_ejemplar')->name('ejemplar.insertar_ejemplar');
-
 
 Route::post('/catalogo-beneficiario', 'PageController@recu_ejemplar')->name('recu_ejemplar');
 

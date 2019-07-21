@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'telefono' => ['required', 'string','min:9', 'max:9'],
             'id_rol' => ['required', 'string','min:1', 'max:1'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'password' => ['required', 'string', 'min:4', 'confirmed'],
         ]);
     }
 

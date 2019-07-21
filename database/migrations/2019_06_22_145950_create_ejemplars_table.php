@@ -15,7 +15,8 @@ class CreateEjemplarsTable extends Migration
     {
         //agregar 
             Schema::create('ejemplars', function (Blueprint $table) {
-            $table->bigIncrements('codigo')->unsigned();
+            $table->bigIncrements('id')->autoIncrement();   
+            $table->integer('codigo')->unsigned();
             $table->integer('id_Estado');
             $table->integer('N_Serie_Libro');
             $table->foreign('id_Estado')->references('id')->on('estados');

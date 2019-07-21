@@ -6,37 +6,41 @@
 
 @section('parte1')
 <div class="row"><h4>Nuevo Prestamo</h4></div>
-	<div class="row">
-		<div class="col-md-8">
-			<label>Buscar libro por Titulo o ISBN</label>
+<div class="row">
+	<div class="col-md-8">
+		<form action="{{ route('recuperar_libro') }}">
+			<label>Buscar libro por Titulo o codigo</label>
 			<div class="row">
-			<div class="col-md-8">
-				<input type="search" name="q" class="  form-control">
-			</div>
-			<div class="col-md-4">
-				<input type="submit" class="btn btn-primary">
-			</div>
-			<div class="col-md-4"></div></div>
+				<div class="col-md-8">
+					<input type="text" name="valor" id="valor" class="  form-control">
+				</div>
+				<div class="col-md-4">
+					<input type="submit"  class="btn btn-primary">
+				</div>
+				<div class="col-md-4"></div></div>
+				
+			</form>
+
 			
 			
 		</div>
 	</div>
-@endsection
-@section('parte2')
-<div class="table-responsive">
-    <table class="table">
-        <thead>
-            <tr>
-              <th scope="col">ISBN</th>
-              <th scope="col">Titulo</th>
-              <th scope="col">Ejemplares</th>
-            </tr>
-          </thead>
-          <tbody>
-          
-                   
-          </tbody>
-    </table>
-  </div>
-@endsection
-@endsection
+	@endsection
+	@section('parte2')
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">ISBN</th>
+					<th scope="col">Titulo</th>
+					<th scope="col">Ejemplares</th>
+				</tr>
+			</thead>
+			<tbody>
+
+
+			</tbody>
+		</table>
+	</div>
+	@endsection
+	@endsection

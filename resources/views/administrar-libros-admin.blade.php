@@ -36,16 +36,23 @@
           <tbody>
 
             @foreach ($libs as $item)
+            
+            @php
+              $nser = $item->n_serie;
+              $ejemp = obtener_ejempl($nser);
+              $esta = obtener_disponible($nser);
+            @endphp
+            
               <tr>
               <th scope="row">
 
                 <a href="{{ route('ejemplar_edit', $item) }}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Añadir Ejemplar</a>
 
                 <a href="" class="btn btn-primary btn-sm" role="button">Editar</a>
-{{-- {{ route('libro.eliminar', $item) }}
-{{ route('libro.edit', $item) }}
+                  {{-- {{ route('libro.eliminar', $item) }}
+                  {{ route('libro.edit', $item) }}
 
- --}}
+                   --}}
                 <form action="" method="post" class="d-inline">
                   @method('DELETE')
                   @csrf
@@ -55,7 +62,8 @@
               </th>
               <td>{{ $item-> ISBN }}</td>
               <td>{{ $item-> titulo }}</td>
-              <td>{{ $cont }}
+              <td>{{ $ejemp }}</td>
+              <td>{{ $esta }}</td>
               
             </tr>
             @endforeach

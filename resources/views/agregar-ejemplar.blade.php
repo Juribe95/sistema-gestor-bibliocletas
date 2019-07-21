@@ -84,7 +84,4 @@
 
         
     @endsection
-    @section('parte3')
-        
-    @endsection
 @endsection
