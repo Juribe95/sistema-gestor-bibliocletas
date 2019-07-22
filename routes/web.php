@@ -48,10 +48,11 @@ Route::get('/autor_registrar', 'PageController@autor_registrar')->name('autor_re
 Route::get('/editorial_registrar', 'PageController@editorial_registrar')->name('editorial_registrar');
 
 Route::get('/nuevo_prestamo', 'PageController@nuevo_prestamo')->name('nuevo_prestamo');
-Route::get('/confirmar_prestamo', 'PageController@confirmar_prestamo')->name('confirmar_prestamo');
 
-Route::get('/confirmar_prestamo/{n_serie}', 'PageController@recuperar_libro')->name('recuperar_libro');
+Route::get('/confirmar_prestamo/{dato?}', 'PageController@buscarL')->name('buscarL');
 
+//Route::get('/confirmar_prestamo', 'PageController@recuperar_libro')->name('recuperar_libro');
+Route::get('/confirmar_prestamo/{dato_buscado}', 'PageController@buscar_libro');
 
 
 //buscar datos
@@ -78,6 +79,9 @@ Route::put('/agregar-ejemplar/{n_serie}', 'PageController@update_ejemplar')->nam
 //rutas de insertar db
 
 Route::post('/registrar-libro', 'PageController@insertar_libro')->name('libro.insertar_libro');
+
+Route::post('/confirmar_prestamo', 'PageController@insertar_pedido')->name('insertar_pedido');
+
 
 Route::post('/categoria_registrar', 'PageController@insertar_cate')->name('categorias.insertar_cate');
 Route::post('/autor_registrar', 'PageController@insertar_autor')->name('autors.insertar_autor');

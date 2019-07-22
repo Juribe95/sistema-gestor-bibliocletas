@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use App\Http\Controllers\Controller;
 
 class PageController extends Controller
 {
@@ -183,6 +186,7 @@ class PageController extends Controller
 
     public function confirmar_prestamo()
     {
+        
         return view('confirmar_prestamo');
     }
 
@@ -471,10 +475,81 @@ class PageController extends Controller
 
     }
 
-    public function recuperar_libro($n_serie){
-        $libr = App\Libro::findOrFail($n_serie);
+
+
+    /**
+     * { Prestamos }
+     *
+     * @param      \Illuminate\Http\Request  $request  The request
+     *
+     * @return     <type>                    ( description_of_the_return_value )
+     */
+    public function buscarL(Request $request){
+        $lib = $request->dato_buscado;
         
-        return view('administrar-libros-admin', compact('libr'));
+        $cd = DB::select('select * from users where id_rol = ?', [3]);  
+        $res = DB::select('select * from libros where titulo = ?', [$lib]);
+        // $data =(string) DB::table('libros')
+        //         ->select('n_serie')
+        //         ->where([
+        //             ['titulo', '=', $lib],
+        //         ])->first();
+        //         
+        $data= obtener_nserie($lib);
+
+        //$as =(string) $data;
+
+        $codigoEjem =  DB::select('select * from ejemplars where N_Serie_Libro = ?', [$data]);
+
+        
+        
+        return view('confirmar_prestamo', compact('res','cd','codigoEjem'));
+    }
+
+    public function insertar_pedido(Request $request)
+    {
+       //return $request->all();
+
+        $request->validate([
+         'id_cliente'=>['required'],
+         'fecha_inicio'=>['required'],
+         'fecha_fin'=>['required'],
+         'n_serie'=>['required'],
+         'codigoEjem'=>['required']
+        ]);
+
+        $nuevo_prestamo = new App\Prestamo;
+       //$nueva_cate->id = $request->id;
+        $nuevo_prestamo->fecha_prestamo = $request->fecha_inicio;
+        $nuevo_prestamo->fecha_devolucion = $request->fecha_fin;
+        $nuevo_prestamo->prestamo_cod_ejemplar = $request->codigoEjem;
+        $nuevo_prestamo->usuario_rut = $request->id_cliente;
+        $nuevo_prestamo->prestamo_n_serie = $request->n_serie;
+        $nuevo_prestamo->save();
+
+        return back()->with('mensaje', 'El Prestamo se ha Realizado con éxito');
+    }
+
+
+    //Fin Prestamo
+
+
+     public function buscar_libro(Request $request)
+    {
+        $lib = $request->dato_buscado;
+        // $res =  DB::table('libros')
+        //      ->where('titulo', '=', $lib)
+        //      ->where(function ($query) {
+        //          $query->where('categoria', '=', $lib)
+        //                ->orWhere('ISBN', '=', $lib);
+        //      })
+        //     ->get();
+            
+        $res = DB::select('select * from libros where titulo = ?', [$lib]);
+        
+        
+        //$libros = App\Libro::findOrFail($lib);
+        return $res;   
     }
 
     //End Libos

@@ -8,14 +8,14 @@
 <div class="row"><h4>Nuevo Prestamo</h4></div>
 <div class="row">
 	<div class="col-md-8">
-		<form action="{{ route('recuperar_libro') }}">
+		<form action="{{ route('buscarL') }}" >
 			<label>Buscar libro por Titulo o codigo</label>
 			<div class="row">
 				<div class="col-md-8">
-					<input type="text" name="valor" id="valor" class="  form-control">
+					<input type="text" name="dato_buscado" id="dato_buscado" class="  form-control">
 				</div>
 				<div class="col-md-4">
-					<input type="submit"  class="btn btn-primary">
+					<input type="submit"  class="btn btn-primary btn-flat">
 				</div>
 				<div class="col-md-4"></div></div>
 				

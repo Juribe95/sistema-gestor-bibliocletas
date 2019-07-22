@@ -46,12 +46,33 @@ function obtener_disponible($nserie){
     return $cont;
 }
 
-function obtener_books($nserie){
+function obtener_nserie($dato){
     $data = DB::table('libros')
-    ->where('titulo', $nserie)
-    ->get();
-    return $data;
+    ->where([
+        ['titulo', '=', $dato],
+    ])->first();
+    return $data->n_serie;
 }
+
+
+
+function obtener_ejemp($nserie){
+    $data = DB::table('ejemplars')
+    ->where([
+        ['N_Serie_Libro', '=', $nserie],
+    ])->first();
+    return $data->codigo;
+}
+
+function contador_ejemplares($nserie){
+    $data = DB::table('ejemplars')->where([
+        ['N_Serie_Libro', '=', $nserie],
+    ])->get();
+    $cont = count($data);
+    return $cont;
+}
+
+
 
 
 
