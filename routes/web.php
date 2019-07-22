@@ -21,7 +21,7 @@ Auth::routes(['verify' => true]);
 
 // pageController
 //Route::get('/', 'PageController@inicio')->name('login');->middleware('verified')
-Route::get('/inicio-admin', 'PageController@inicio-admin')->name('inicio-admin');
+Route::get('/inicio-admin', 'PageController@inicio_admin')->name('inicio-admin');
 
 Route::get('/administrar-libros-admin', 'PageController@administrar_libros_admin')->name('administrar-libros-admin');
 Route::get('/administrar-voluntarios-admin', 'PageController@administrar_voluntarios_admin')->name('administrar-voluntarios-admin');
@@ -50,9 +50,12 @@ Route::get('/editorial_registrar', 'PageController@editorial_registrar')->name('
 Route::get('/nuevo_prestamo', 'PageController@nuevo_prestamo')->name('nuevo_prestamo');
 
 Route::get('/confirmar_prestamo/{dato?}', 'PageController@buscarL')->name('buscarL');
-
+Route::get('/confirmar_prestamo_beneficiario/{dato?}', 'PageController@buscarLBeneficiario')->name('buscarLBeneficiario');
 //Route::get('/confirmar_prestamo', 'PageController@recuperar_libro')->name('recuperar_libro');
-Route::get('/confirmar_prestamo/{dato_buscado}', 'PageController@buscar_libro');
+
+// Route::get('/confirmar_prestamo/{dato_buscado}', 'PageController@buscar_libro');
+
+// Route::get('/confirmar_prestamo_beneficiario/{dato_buscado}', 'PageController@buscarLBeneficiario');
 
 
 //buscar datos
@@ -81,6 +84,12 @@ Route::put('/agregar-ejemplar/{n_serie}', 'PageController@update_ejemplar')->nam
 Route::post('/registrar-libro', 'PageController@insertar_libro')->name('libro.insertar_libro');
 
 Route::post('/confirmar_prestamo', 'PageController@insertar_pedido')->name('insertar_pedido');
+Route::post('/confirmar_prestamo', 'PageController@insertar_pedido')->name('insertar_pedido');
+
+Route::delete('/prestamos-devoluciones/{id}', 'PageController@prestamo_eliminar')->name('prestamo.eliminar');
+
+//Route::post('/confirmar_prestamo_beneficiario', 'PageController@buscarLBeneficiario')->name('buscarLBeneficiario');
+
 
 
 Route::post('/categoria_registrar', 'PageController@insertar_cate')->name('categorias.insertar_cate');
@@ -92,9 +101,18 @@ Route::post('/catalogo-beneficiario', 'PageController@recu_ejemplar')->name('rec
 
 
 //rutas para eliminar
+
+
+Route::delete('/administrar_libros_admin/{n_serie}', 'PageController@libro_eliminar')->name('libro.eliminar');
+
 Route::delete('/categorias/categoria_eliminar/{id}', 'PageController@cagoria_eliminar')->name('categoria.eliminar');
+
 Route::delete('/autor/autor_eliminar/{id}', 'PageController@autor_eliminar')->name('autor.eliminar');
+
 Route::delete('/editoriales/editorial_eliminar/{id}', 'PageController@editorial_eliminar')->name('editorial.eliminar');
+
+
+Route::delete('/administrar_beneficiarios_admin/{rut}', 'PageController@benefiario_eliminar')->name('beneficiario.eliminar');
 
 
 

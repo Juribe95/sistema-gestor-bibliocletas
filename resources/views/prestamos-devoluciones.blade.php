@@ -22,6 +22,11 @@
 
 @section('parte2')
 <div class="table-responsive">
+  @if (session('mensaje'))
+                  <div class="alert alert-success" role="alert">
+                  {{ session('mensaje') }}
+                  </div>
+                @endif
   <table class="table">
     <thead>
       <tr>
@@ -48,7 +53,12 @@
       
        <tr>
         <th scope="row">
-          <a href="#" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Devuelto</a>
+          <form action="{{ route('prestamo.eliminar', $element->id) }}" method="post" class="d-inline">
+                  @method('DELETE')
+                  @csrf
+                 
+                  <button class="btn btn-primary btn-sm" type="submit">Devolver</button>
+                </form>
         </th>
         <td>{{ $is }}</td>
         <td>

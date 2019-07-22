@@ -17,6 +17,24 @@
         </div>
 
     </div>
+    <div class="form-row">
+      <form action="{{ route('buscarLBeneficiario') }}" >
+      <label>Buscar libro por Titulo o ISBN</label>
+      <div class="row">
+        <div class="col-md-8">
+          <input type="text" name="dato_buscado" id="dato_buscado" class="  form-control">
+        </div>
+        <div class="col-md-4">
+          <input type="submit"  class="btn btn-primary btn-flat">
+        </div>
+        <div class="col-md-4"></div></div>
+        @if (session('mensaje'))
+            <div class="alert alert-success" role="alert">
+                {{ session('mensaje') }}
+            </div>
+            @endif
+      </form>
+    </div>
 @endsection
 
 
@@ -25,7 +43,7 @@
     <table class="table">
         <thead>
             <tr>
-              <th scope="col">Acciones</th>
+              
               <th scope="col">ISBN</th>
               <th scope="col">Titulo</th>
               <th scope="col">Ejemplar</th>
@@ -36,27 +54,22 @@
           <tbody>
 
             @foreach ($libs as $item)
+            
+            @php
+              $nser = $item->n_serie;
+              $id_categoria = $item->id_categoria;
+              $ejemp = obtener_ejempl($nser);
+              $esta = obtener_disponible($nser);
+              $nombre_categoria = obtener_categoria($id_categoria);
+            @endphp
+            
               <tr>
-              <th scope="row">
-
-                <a href="" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Reservar</a>
-
-                
-                <form action="" method="post" class="d-inline">
-                  @method('DELETE')
-                  @csrf
-                </form>
-              </th>
+              
               <td>{{ $item-> ISBN }}</td>
               <td>{{ $item-> titulo }}</td>
-              <td>{{ $cont }}
-                {{-- <select name="enviars" class="form-control">
-                  @foreach ($enviars as $element)
-                    <option value="{{ $element->codigo }} " >{{ $element->codigo }}</option>
-                  @endforeach
-                </select> --}}
-                
-              </td>
+              <td>{{ $ejemp }}</td>
+              <td>{{ $esta }}</td>
+              <td>{{ $nombre_categoria }}</td>
             </tr>
             @endforeach
 

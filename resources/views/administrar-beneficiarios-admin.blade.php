@@ -22,6 +22,11 @@
 
 @section('parte2')
 <div class="table-responsive">
+  @if (session('mensaje'))
+  <div class="alert alert-success" role="alert">
+    {{ session('mensaje') }}
+  </div>
+  @endif
     <table class="table">
         <thead>
             <tr>
@@ -37,7 +42,14 @@
               <th scope="row">
                 <a href="agregar-ejemplar" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Historial</a>
                 <a href="editar-libro" class="btn btn-secondary btn-sm" role="button" >Editar</a>
-                <a href="eliminar-libro" class="btn btn-secondary btn-sm" role="button" >Eliminar</a>
+
+                <form action="{{ route('beneficiario.eliminar', $element->rut) }}" method="post" class="  d-inline">
+                    @method('DELETE')
+                    @csrf
+                    
+                    <button class="btn btn-primary btn-sm" type="submit">Eliminar</button>
+                  </form>
+
               </th>
               <td>{{ $element->name }}</td>
               <td>{{ $element->email }}</td>

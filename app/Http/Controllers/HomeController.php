@@ -35,10 +35,10 @@ class HomeController extends Controller
         }
 
         if (Auth::User()->id_rol == 2) {
-            return view('inicio-Beneficiario');
+            return view('inicio-voluntario');
         }
         if (Auth::User()->id_rol == 3) {
-            return view('inicio-voluntario');
+            return view('inicio-Beneficiario');
         }
     }
 }

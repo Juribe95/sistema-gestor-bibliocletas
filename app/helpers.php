@@ -37,6 +37,7 @@ function obtener_ejempl($nserie){
     return $cont;
 } 
 
+
 function obtener_disponible($nserie){
     $data = DB::table('ejemplars')->where([
         ['id_Estado', '=', '1'],
@@ -50,7 +51,8 @@ function obtener_nserie($dato){
     $data = DB::table('libros')
     ->where([
         ['titulo', '=', $dato],
-    ])->first();
+    ])
+    ->orWhere('ISBN', '=', $dato)->first();
     return $data->n_serie;
 }
 
@@ -70,6 +72,35 @@ function contador_ejemplares($nserie){
     ])->get();
     $cont = count($data);
     return $cont;
+}
+
+function obtener_categoria($id_categoria){
+   $data = DB::table('categorias')
+   ->where('id', $id_categoria)
+   ->first();
+   return $data->nombre_categoria;
+}
+
+function update_estado_ejemplar($codigoEjem){
+  $data = DB::table('ejemplars')
+            ->where('codigo', $codigoEjem)
+            ->update(['id_Estado' => 2]);
+   return $data;
+}
+
+function update_estado_ejemplar_prestamo($codigoEjem){
+  $data = DB::table('ejemplars')
+            ->where('codigo', $codigoEjem)
+            ->update(['id_Estado' => 1]);
+   return $data;
+}
+
+function obtener_codEjemplar($id){
+    $data = DB::table('prestamos')
+    ->where([
+        ['id', '=', $id],
+    ])->first();
+    return $data->prestamo_cod_ejemplar;
 }
 
 

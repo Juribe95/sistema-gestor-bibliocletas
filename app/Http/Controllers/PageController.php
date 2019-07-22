@@ -11,11 +11,11 @@ use App\Http\Controllers\Controller;
 
 class PageController extends Controller
 {
-    
 
 
-    
-    
+
+
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -44,7 +44,7 @@ class PageController extends Controller
         
         return view('administrar-libros-admin', compact('libs', 'cont'));
     }
-   
+
     public function administrar_voluntarios_admin()
     {
         $vol= App\User::all();
@@ -66,7 +66,7 @@ class PageController extends Controller
         $lib = App\Libro::all();
         
         return view('prestamos-devoluciones', compact('newp', 'lib'));
-}
+    }
     public function categorias()
     {
         $cate = App\Categoria::all();
@@ -132,7 +132,7 @@ class PageController extends Controller
 
     public function agregar_ejemplar()
     {
-        
+
         $nserie = App\Libro::all();
         $esta = App\Estado::all();
         return view('agregar-ejemplar', compact('esta', 'nserie'));
@@ -179,15 +179,20 @@ class PageController extends Controller
 
     public function nuevo_prestamo()
     {
-            return view('nuevo_prestamo');
+        return view('nuevo_prestamo');
     }
 
 
 
     public function confirmar_prestamo()
     {
-        
+
         return view('confirmar_prestamo');
+    }
+    public function confirmar_prestamo_beneficiario()
+    {
+
+        return view('confirmar_prestamo_beneficiario');
     }
 
 
@@ -212,14 +217,14 @@ class PageController extends Controller
        //return $request->all();
 
         $request->validate([
-         'ISBN'=>['required','min:10','max:13'],
-         'titulo'=>['required'],
-         'n_paginas'=>['required'],
-         'id_editorial'=>['required'],
-         'id_estado'=>['required'],
-         'id_autor'=>['required'],
-         'id_categoria'=>['required']
-        ]);
+           'ISBN'=>['required','min:10','max:13'],
+           'titulo'=>['required'],
+           'n_paginas'=>['required'],
+           'id_editorial'=>['required'],
+           'id_estado'=>['required'],
+           'id_autor'=>['required'],
+           'id_categoria'=>['required']
+       ]);
 
         $nuevo_libro = new App\Libro;
        //$nueva_cate->id = $request->id;
@@ -235,10 +240,24 @@ class PageController extends Controller
         return back()->with('mensaje', 'Libro Insertado');
     }
 
+    public function libro_eliminar($n_serie)
+    {
+        //return $n_serie;
+
+        //$editElim = App\Libro::where('n_serie', $n_serie)->delete();
+        $ejemElim = DB::delete('delete from ejemplars where N_Serie_Libro = ?',[$n_serie]);
+        $editElim = DB::delete('delete from libros where n_serie = ?',[$n_serie]);
+
+
+         //$editElim->delete();
+
+        return back()->with('mensaje', 'Se ha Eliminado un Libro');
+    }
+
     //End Libros
     
-   
-   
+
+
 
    // funciones para la bases de datos
 
@@ -250,8 +269,8 @@ class PageController extends Controller
        //return $request->all();
 
         $request->validate([
-         'nombre_categoria'=>['required','unique:categorias']
-        ]);
+           'nombre_categoria'=>['required','unique:categorias']
+       ]);
         
 
         $nueva_cate = new App\Categoria;
@@ -278,24 +297,24 @@ class PageController extends Controller
 
     public function categoria_edit($id)
     {
-           $cate = App\Categoria::findOrFail($id);
-           return view('categoria_edit', compact('cate'));
-    }
+     $cate = App\Categoria::findOrFail($id);
+     return view('categoria_edit', compact('cate'));
+ }
 
-    public function cagoria_eliminar($id)
-    {
+ public function cagoria_eliminar($id)
+ {
 
-        $cateElim = App\Categoria::findOrFail($id);
-        $cateElim->delete();
+    $cateElim = App\Categoria::findOrFail($id);
+    $cateElim->delete();
 
-        return back()->with('mensaje', 'Categoria Eliminada');
-    }
+    return back()->with('mensaje', 'Categoria Eliminada');
+}
 
-    public function recuperar_libro(Request $request)
-    {
-        echo "string";
-        return view('inicio-admin');
-    }
+public function recuperar_libro(Request $request)
+{
+    echo "string";
+    return view('inicio-admin');
+}
 
     //end categoria
 
@@ -305,58 +324,58 @@ class PageController extends Controller
 
 
 
-    public function insertar_autor(Request $request)
-    {
+public function insertar_autor(Request $request)
+{
         //return $request->all();
-        $request->validate([
-         'nombre'=>'required',
-         'apellido_paterno'=>'required',
-         
-        ]);
+    $request->validate([
+       'nombre'=>'required',
+       'apellido_paterno'=>'required',
 
-        $nuevo_autor = new App\Autor;
-        $nuevo_autor->nombre = $request->nombre;
-        $nuevo_autor->apellido_paterno = $request->apellido_paterno;
-        $nuevo_autor->apellido_materno = $request->apellido_materno;
-        $nuevo_autor->save();
+   ]);
 
-        return back()->with('mensaje', 'Autor Agregado');
-    }
+    $nuevo_autor = new App\Autor;
+    $nuevo_autor->nombre = $request->nombre;
+    $nuevo_autor->apellido_paterno = $request->apellido_paterno;
+    $nuevo_autor->apellido_materno = $request->apellido_materno;
+    $nuevo_autor->save();
 
-    public function recu_ejemplar(Request $request)
-    {
-        return $request->all();
-    }
+    return back()->with('mensaje', 'Autor Agregado');
+}
 
-
-
-    public function update_autor(Request $request, $id)
-    {
-
-        $aut = App\Autor::findOrFail($id);
-        $aut->nombre = $request->nombre;
-        $aut->apellido_paterno = $request->apellido_paterno;
-        $aut->apellido_materno = $request->apellido_materno;
-        $aut->save();
-
-        return back()->with('mensaje', 'Datos del Autor Modificados');
-    }
-
-    public function autor_edit($id)
-    {
-           $aut = App\Autor::findOrFail($id);
-           return view('autor/autor_edit', compact('aut'));
-    }
+public function recu_ejemplar(Request $request)
+{
+    return $request->all();
+}
 
 
-    public function autor_eliminar($id)
-    {
 
-        $autElim = App\Autor::findOrFail($id);
-        $autElim->delete();
+public function update_autor(Request $request, $id)
+{
 
-        return back()->with('mensaje', 'Autor Eliminado');
-    }
+    $aut = App\Autor::findOrFail($id);
+    $aut->nombre = $request->nombre;
+    $aut->apellido_paterno = $request->apellido_paterno;
+    $aut->apellido_materno = $request->apellido_materno;
+    $aut->save();
+
+    return back()->with('mensaje', 'Datos del Autor Modificados');
+}
+
+public function autor_edit($id)
+{
+ $aut = App\Autor::findOrFail($id);
+ return view('autor/autor_edit', compact('aut'));
+}
+
+
+public function autor_eliminar($id)
+{
+
+    $autElim = App\Autor::findOrFail($id);
+    $autElim->delete();
+
+    return back()->with('mensaje', 'Autor Eliminado');
+}
 
 
 
@@ -368,91 +387,91 @@ class PageController extends Controller
     //editoriales
 
 
-    public function insertar_edit(Request $request)
-    {
+public function insertar_edit(Request $request)
+{
        //return $request->all();
 
-        $request->validate([
-         'nombre_editorial'=>['required','unique:editorials']
-        ]);
+    $request->validate([
+       'nombre_editorial'=>['required','unique:editorials']
+   ]);
 
 
-        $nueva_edit = new App\Editorial;
-        $nueva_edit->nombre_editorial = $request->nombre_editorial;
-        $nueva_edit->save();
+    $nueva_edit = new App\Editorial;
+    $nueva_edit->nombre_editorial = $request->nombre_editorial;
+    $nueva_edit->save();
 
-        return back()->with('mensaje', 'Editorial Agregada');
-    }
-
-
-    public function update_editorial(Request $request, $id)
-    {
-
-        $edit = App\Editorial::findOrFail($id);
-        $edit->nombre_editorial = $request->nombre_editorial;
-        $edit->save();
-
-        return back()->with('mensaje', 'Datos de la Editorial Modificados');
-    }
-
-    public function editorial_edit($id)
-    {
-           $edit = App\Editorial::findOrFail($id);
-           return view('/editoriales/editorial_edit', compact('edit'));
-    }
+    return back()->with('mensaje', 'Editorial Agregada');
+}
 
 
-    public function editorial_eliminar($id)
-    {
+public function update_editorial(Request $request, $id)
+{
 
-        $editElim = App\Editorial::findOrFail($id);
-        $editElim->delete();
+    $edit = App\Editorial::findOrFail($id);
+    $edit->nombre_editorial = $request->nombre_editorial;
+    $edit->save();
 
-        return back()->with('mensaje', 'Editorial Eliminada');
-    }
+    return back()->with('mensaje', 'Datos de la Editorial Modificados');
+}
+
+public function editorial_edit($id)
+{
+ $edit = App\Editorial::findOrFail($id);
+ return view('/editoriales/editorial_edit', compact('edit'));
+}
+
+
+public function editorial_eliminar($id)
+{
+
+    $editElim = App\Editorial::findOrFail($id);
+    $editElim->delete();
+
+    return back()->with('mensaje', 'Editorial Eliminada');
+}
 
     //end editoriales
 
-    
+
 
     //añadir ejemplares
 
 
-    public function insertar_ejemplar(Request $request)
-    {
+public function insertar_ejemplar(Request $request)
+{
            //return $request->all();
 
-           $request->validate([
-           'codigo'=>['required']
-           ]);
+ $request->validate([
+     'codigo'=>['required']
+ ]);
 
-           $ejem = new App\Ejemplar;
-           $ejem->codigo = $request->codigo;
-           $ejem->id_Estado = $request->id_Estado;
-           $ejem->N_Serie_Libro = $request->N_Serie_Libro;
-           $ejem->save();
+ $ejem = new App\Ejemplar;
+ $ejem->codigo = $request->codigo;
+ $ejem->id_Estado = $request->id_Estado;
+ $ejem->N_Serie_Libro = $request->N_Serie_Libro;
+ $ejem->save();
 
-           return back()->with('mensaje', 'Se agregegó un nuevo ejemplar');
-    }
+ return back()->with('mensaje', 'Se agregegó un nuevo ejemplar');
+}
 
 
 
-    public function update_ejemplar(Request $request, $n_serie)
-    {
+public function update_ejemplar(Request $request, $n_serie)
+{
 
-        $ejem = App\Ejemplar::findOrFail($n_serie);
-        $ejem->n_serie = $request->N_Serie_Libro;
-        $ejem->save();
+    $ejem = App\Ejemplar::findOrFail($n_serie);
+    $ejem->n_serie = $request->N_Serie_Libro;
+    $ejem->save();
 
-        return back()->with('mensaje', 'Datos de la Editorial Modificados');
-    }
+    return back()->with('mensaje', 'Datos de la Editorial Modificados');
+}
 
-    public function recu_nserie($n_serie)
-    {
-            
-            $ejem = App\Ejemplar::findOrFail($n_serie);
-           return view('agregar-ejemplar', compact('ejem'));
-    }
+public function recu_nserie($n_serie)
+{
+
+    $ejem = App\Ejemplar::findOrFail($n_serie);
+    return view('agregar-ejemplar', compact('ejem'));
+}
 
 
 
@@ -464,16 +483,16 @@ class PageController extends Controller
 
 
 
-    public function enviarnserie($n_serie)
-    {
+public function enviarnserie($n_serie)
+{
 
-        $nserie = App\Ejemplar::findOrFail($n_serie);
-        $contejem = DB::select('select codigo from ejemplars where N_Serie_Libro = ?', [$nserie]);
-        $contejem = $contejem->count();
-        return view('administrar-libros-admin', compact('contejem'));
+    $nserie = App\Ejemplar::findOrFail($n_serie);
+    $contejem = DB::select('select codigo from ejemplars where N_Serie_Libro = ?', [$nserie]);
+    $contejem = $contejem->count();
+    return view('administrar-libros-admin', compact('contejem'));
 
 
-    }
+}
 
 
 
@@ -484,59 +503,128 @@ class PageController extends Controller
      *
      * @return     <type>                    ( description_of_the_return_value )
      */
+    // public function buscarL(Request $request){
+    //     $lib = $request->dato_buscado;
+
+    //     $cd = DB::select('select * from users where id_rol = ?', [3]);  
+    //     $res = DB::select('select * from libros where titulo = ?', [$lib]);
+    //     // $data =(string) DB::table('libros')
+    //     //         ->select('n_serie')
+    //     //         ->where([
+    //     //             ['titulo', '=', $lib],
+    //     //         ])->first();
+    //     //         
+    //     $data= obtener_nserie($lib);
+
+    //     //$as =(string) $data;
+
+    //     $codigoEjem =  DB::select('select * from ejemplars where N_Serie_Libro = ?', [$data]);
+
+
+
+    //     return view('confirmar_prestamo', compact('res','cd','codigoEjem'));
+    // }
+
+
     public function buscarL(Request $request){
         $lib = $request->dato_buscado;
         
         $cd = DB::select('select * from users where id_rol = ?', [3]);  
         $res = DB::select('select * from libros where titulo = ?', [$lib]);
-        // $data =(string) DB::table('libros')
-        //         ->select('n_serie')
-        //         ->where([
-        //             ['titulo', '=', $lib],
-        //         ])->first();
-        //         
-        $data= obtener_nserie($lib);
-
-        //$as =(string) $data;
-
+        $res2 = DB::select('select * from libros where ISBN = ?', [$lib]);
+        if ($res == true) {
+            $data= obtener_nserie($lib);
         $codigoEjem =  DB::select('select * from ejemplars where N_Serie_Libro = ?', [$data]);
+             return view('confirmar_prestamo', compact('res','cd','codigoEjem'));
+        }else{
+            if ($res2 == true) {
+                $res = $res2;
+                $data= obtener_nserie($lib);
+        $codigoEjem =  DB::select('select * from ejemplars where N_Serie_Libro = ?', [$data]);
+                return view('confirmar_prestamo', compact('res','cd','codigoEjem'));
+            }else{
+               return back()->with('mensaje', 'No hay libros con el dato ingresado');
+           }
+       }
 
-        
-        
-        return view('confirmar_prestamo', compact('res','cd','codigoEjem'));
-    }
 
-    public function insertar_pedido(Request $request)
-    {
+
+
+   }
+
+   public function buscarLBeneficiario(Request $request){
+    $lib = $request->dato_buscado;
+        
+        $cd = DB::select('select * from users where id_rol = ?', [3]);  
+        $res = DB::select('select * from libros where titulo = ?', [$lib]);
+        $res2 = DB::select('select * from libros where ISBN = ?', [$lib]);
+        if ($res == true) {
+            $data= obtener_nserie($lib);
+        $codigoEjem =  DB::select('select * from ejemplars where N_Serie_Libro = ?', [$data]);
+             return view('confirmar_prestamo_beneficiario', compact('res','cd','codigoEjem'));
+        }else{
+            if ($res2 == true) {
+                $res = $res2;
+                $data= obtener_nserie($lib);
+        $codigoEjem =  DB::select('select * from ejemplars where N_Serie_Libro = ?', [$data]);
+                return view('confirmar_prestamo_beneficiario', compact('res','cd','codigoEjem'));
+            }else{
+               return back()->with('mensaje', 'No hay libros con el dato ingresado');
+           }
+       }
+
+
+   return view('confirmar_prestamo_beneficiario', compact('res','cd','codigoEjem'));
+
+}
+
+public function insertar_pedido(Request $request)
+{
        //return $request->all();
 
-        $request->validate([
-         'id_cliente'=>['required'],
-         'fecha_inicio'=>['required'],
-         'fecha_fin'=>['required'],
-         'n_serie'=>['required'],
-         'codigoEjem'=>['required']
-        ]);
+    $request->validate([
+       'id_cliente'=>['required'],
+       'fecha_inicio'=>['required'],
+       'fecha_fin'=>['required'],
+       'n_serie'=>['required'],
+       'codigoEjem'=>['required']
+   ]);
 
-        $nuevo_prestamo = new App\Prestamo;
-       //$nueva_cate->id = $request->id;
-        $nuevo_prestamo->fecha_prestamo = $request->fecha_inicio;
-        $nuevo_prestamo->fecha_devolucion = $request->fecha_fin;
-        $nuevo_prestamo->prestamo_cod_ejemplar = $request->codigoEjem;
-        $nuevo_prestamo->usuario_rut = $request->id_cliente;
-        $nuevo_prestamo->prestamo_n_serie = $request->n_serie;
-        $nuevo_prestamo->save();
+    $var = $request->codigoEjem;
+    $d = update_estado_ejemplar($var);
 
-        return back()->with('mensaje', 'El Prestamo se ha Realizado con éxito');
-    }
+    $nuevo_prestamo = new App\Prestamo;
+    $nuevo_prestamo->fecha_prestamo = $request->fecha_inicio;
+    $nuevo_prestamo->fecha_devolucion = $request->fecha_fin;
+    $nuevo_prestamo->prestamo_cod_ejemplar = $request->codigoEjem;
+    $nuevo_prestamo->usuario_rut = $request->id_cliente;
+    $nuevo_prestamo->prestamo_n_serie = $request->n_serie;
+    $nuevo_prestamo->save();
+
+    return back()->with('mensaje', 'La reserva se ha Realizado con éxito');
+}
+
+public function prestamo_eliminar($id)
+{
+
+    $codigoEjem =  DB::select('select prestamo_cod_ejemplar from prestamos where id = ?', [$id]);
+    $ejemcod = obtener_codEjemplar($id);
+    $d = update_estado_ejemplar_prestamo($ejemcod);
+    $editElim = App\Prestamo::findOrFail($id);
+
+    $editElim->delete();
+
+    return back()->with('mensaje', 'Se ha devuelto un Libro');
+}
+
 
 
     //Fin Prestamo
 
 
-     public function buscar_libro(Request $request)
-    {
-        $lib = $request->dato_buscado;
+public function buscar_libro(Request $request)
+{
+    $lib = $request->dato_buscado;
         // $res =  DB::table('libros')
         //      ->where('titulo', '=', $lib)
         //      ->where(function ($query) {
@@ -544,13 +632,40 @@ class PageController extends Controller
         //                ->orWhere('ISBN', '=', $lib);
         //      })
         //     ->get();
-            
-        $res = DB::select('select * from libros where titulo = ?', [$lib]);
-        
-        
+
+    $res = DB::select('select * from libros where titulo = ?', [$lib]);
+
+
         //$libros = App\Libro::findOrFail($lib);
-        return $res;   
-    }
+    return $res;   
+}
 
     //End Libos
+    //
+
+
+    //Beneficiarios
+    //
+public function benefiario_eliminar($rut)
+{
+
+
+    $prestamo_rut = DB::select('select usuario_rut from prestamos where usuario_rut = ?',[$rut]);
+
+    if ($prestamo_rut == true) {
+        return back()->with('mensaje', 'El Usuario no se ha podido Eliminar debido a que el esta siendo ocupado en otro lugar');
+
+        
+    }else{
+        $ejemElim = DB::delete('delete from users where rut = ?',[$rut]);
+        return back()->with('mensaje', 'Se ha Eliminado un Libro');
+    }
+
+
+
+
+
+}
+
+    //Fin Beneficiarios
 }

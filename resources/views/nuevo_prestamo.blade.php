@@ -9,7 +9,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<form action="{{ route('buscarL') }}" >
-			<label>Buscar libro por Titulo o codigo</label>
+			<label>Buscar libro por Titulo o ISBN</label>
 			<div class="row">
 				<div class="col-md-8">
 					<input type="text" name="dato_buscado" id="dato_buscado" class="  form-control">
@@ -18,7 +18,11 @@
 					<input type="submit"  class="btn btn-primary btn-flat">
 				</div>
 				<div class="col-md-4"></div></div>
-				
+				@if (session('mensaje'))
+            <div class="alert alert-success" role="alert">
+                {{ session('mensaje') }}
+            </div>
+            @endif
 			</form>
 
 			
